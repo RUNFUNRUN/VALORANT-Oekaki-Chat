@@ -10,3 +10,24 @@ h1{
     color: white;
     background-color: rgb(255, 73, 73);
 }
+
+.main{
+    margin: auto 10%;
+}
+
+.selection{
+    margin: 5% auto;
+}
+
+#table{
+    margin: 5% auto;
+    text-align: center;
+    line-height: 0px;
+}
+
+.pixel{
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    display: inline-block;
+}
