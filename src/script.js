@@ -1,5 +1,5 @@
 (() => {
-    const FullHdW = 25;
+    const FullHdW = 26;
     const stretchW = 27;
     const maxW = stretchW;
     const maxH = 13;
@@ -57,15 +57,21 @@
     const tableClicked = (e) => {
         const $this = e.target;
         $this.classList.toggle("clicked");
-        if ($this.dataset.number == i * maxW + j) {
-            data[i][j] = data[i][j] == 0 ? 1 : 0;
+        for(let i = 0; i < maxH; i++) {
+            for(let j = 0; j < maxW; j++) {
+                if ($this.dataset.number == i * maxW + j) {
+                    data[i][j] = (data[i][j] == 0 ? 1 : 0);
+                }
+            }
         }
+        console.log($this.dataset.number);
     }
 
     const resetClicked = () => {
         for (let i = 0; i < H; i++) {
             for (let j = 0; j < W; j++) {
                 document.querySelectorAll("#js-table button")[i * maxW + j].classList.remove("clicked");
+                data[i][j] = 0;
             }
         }
     }
@@ -94,6 +100,18 @@
         updateTable();
     }
 
+    const copyToClickBoard = () => {
+        const grayChar = "░";
+        const whiteChar = "█";
+        let content = "";
+        for(let i = 0; i < H; i++){
+            for(let j = 0; j < W; j++){
+                content += (data[i][j] == 0 ? grayChar : whiteChar);
+            }
+        }
+        navigator.clipboard.writeText(content);
+    }
+
     createTable();
     for (let i = 0; i < H; i++) {
         for (let j = 0; j < W; j++) {
@@ -106,5 +124,8 @@
     document.getElementById("js-stretch").addEventListener("click", changeStretch);
 
     document.getElementById("js-addLine").addEventListener("click", controlAddClicked);
+
+    document.getElementById("js-copy").addEventListener("click", copyToClickBoard);
+
     document.getElementById("js-removeLine").addEventListener("click", controlRemoveClicked);
 })();
