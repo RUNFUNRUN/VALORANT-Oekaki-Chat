@@ -57,14 +57,13 @@
     const tableClicked = (e) => {
         const $this = e.target;
         $this.classList.toggle("clicked");
-        for(let i = 0; i < maxH; i++) {
-            for(let j = 0; j < maxW; j++) {
+        for(let i = 0; i < H; i++) {
+            for(let j = 0; j < W; j++) {
                 if ($this.dataset.number == i * maxW + j) {
                     data[i][j] = (data[i][j] == 0 ? 1 : 0);
                 }
             }
         }
-        console.log($this.dataset.number);
     }
 
     const resetClicked = () => {
