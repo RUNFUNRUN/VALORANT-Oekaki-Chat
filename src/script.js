@@ -115,7 +115,7 @@
     createTable();
     for (let i = 0; i < H; i++) {
         for (let j = 0; j < W; j++) {
-            document.querySelectorAll(".pixel")[i * W + j].addEventListener("click", (e) => tableClicked(e));
+            document.querySelectorAll(".pixel")[i * maxW + j].addEventListener("click", (e) => tableClicked(e));
         }
     }
     document.getElementById("js-reset").addEventListener("click", resetClicked);
