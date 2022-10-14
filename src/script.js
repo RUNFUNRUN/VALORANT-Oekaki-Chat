@@ -25,14 +25,14 @@
             for (let j = 0; j < maxW; j++) {
                 let $elem = document.createElement("button");
                 $elem.className = "pixel";
+                $elem.innerHTML = " ";
+                $elem.dataset.number = count;
+                $parent.appendChild($elem);
                 if(i < defaultH && j < defaultW) {
                     $elem.classList.add("active");
                 }else{
                     $elem.classList.add("inactive");
                 }
-                $elem.innerHTML = " ";
-                $elem.dataset.number = count;
-                $parent.appendChild($elem);
                 count++;
             }
             $parent.appendChild(document.createElement("br"));
