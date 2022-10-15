@@ -123,8 +123,7 @@
     document.getElementById("js-stretch").addEventListener("click", changeStretch);
 
     document.getElementById("js-addLine").addEventListener("click", controlAddClicked);
+    document.getElementById("js-removeLine").addEventListener("click", controlRemoveClicked);
 
     document.getElementById("js-copy").addEventListener("click", copyToClickBoard);
-
-    document.getElementById("js-removeLine").addEventListener("click", controlRemoveClicked);
 })();
