@@ -11,7 +11,7 @@
     let H = defaultH;
     
     let data = new Array(maxH);
-    for (let i = 0; i < H; i++) {
+    for (let i = 0; i < maxH; i++) {
         data[i] = new Array(maxW);
         for (let j = 0; j < maxW; j++) {
             data[i][j] = 0;
@@ -57,9 +57,9 @@
     const tableClicked = (e) => {
         const $this = e.target;
         $this.classList.toggle("clicked");
-        for(let i = 0; i < H; i++) {
-            for(let j = 0; j < W; j++) {
-                if ($this.dataset.number == i * maxW + j) {
+        for(let i = 0; i < maxH; i++) {
+            for(let j = 0; j < maxW; j++) {
+                if ($this.dataset.number == (i * maxW + j)) {
                     data[i][j] = (data[i][j] == 0 ? 1 : 0);
                 }
             }
@@ -109,6 +109,7 @@
             }
         }
         navigator.clipboard.writeText(content);
+        console.log("a");
     }
 
     createTable();
@@ -118,7 +119,6 @@
             document.querySelectorAll(".pixel")[i * maxW + j].addEventListener("click", (e) => tableClicked(e));
         }
     }
-    document.getElementById("js-reset").addEventListener("click", resetClicked);
 
     document.getElementById("js-FullHD").addEventListener("click", changeFullHD);
     document.getElementById("js-stretch").addEventListener("click", changeStretch);
@@ -127,4 +127,6 @@
     document.getElementById("js-removeLine").addEventListener("click", controlRemoveClicked);
 
     document.getElementById("js-copy").addEventListener("click", copyToClickBoard);
+
+    document.getElementById("js-reset").addEventListener("click", resetClicked);
 })();
