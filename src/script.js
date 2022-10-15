@@ -112,8 +112,9 @@
     }
 
     createTable();
-    for (let i = 0; i < H; i++) {
-        for (let j = 0; j < W; j++) {
+
+    for (let i = 0; i < maxH; i++) {
+        for (let j = 0; j < maxW; j++) {
             document.querySelectorAll(".pixel")[i * maxW + j].addEventListener("click", (e) => tableClicked(e));
         }
     }
