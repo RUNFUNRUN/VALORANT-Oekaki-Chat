@@ -38,6 +38,11 @@
         }
     }
 
+    const currentHeight = () => {
+        let $elem = document.getElementById("js-height");
+        $elem.innerHTML = H;
+    }
+
     const updateTable = () => {
         for (let i = 0; i < maxH; i++) {
             for (let j = 0; j < maxW; j++) {
@@ -94,6 +99,7 @@
         if (H < maxH) {
             H++;
             updateTable();
+            currentHeight();
         }
     }
 
@@ -101,6 +107,7 @@
         if (H > 1) {
             H--;
             updateTable();
+            currentHeight();
         }
     }
 
@@ -133,6 +140,7 @@
 
     createTable();
     selectResolution();
+    currentHeight();
 
     for (let i = 0; i < maxH; i++) {
         for (let j = 0; j < maxW; j++) {
