@@ -67,8 +67,8 @@
     }
 
     const resetClicked = () => {
-        for (let i = 0; i < H; i++) {
-            for (let j = 0; j < W; j++) {
+        for (let i = 0; i < maxH; i++) {
+            for (let j = 0; j < maxW; j++) {
                 document.querySelectorAll("#js-table button")[i * maxW + j].classList.remove("clicked");
                 data[i][j] = 0;
             }
