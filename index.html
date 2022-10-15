@@ -15,14 +15,18 @@
                 <div class = "buttons">
                     <div class = "selection">
                         <a>
-                            DEFAULT Full HD
+                            Resolution mode
                         </a>
-                        <button id = "js-FullHD">
-                            Full HD
-                        </button>
-                        <button id = "js-stretch">
-                            4:3
-                        </button>
+                        <a>
+                            <select id = "js-resolution">
+                                <option value = "FullHD" selected>
+                                    Full HD
+                                </option>
+                                <option value= "stretch">
+                                    4:3
+                                </option>
+                            </select>
+                        </a>
                     </div>
                     <div class = "control">
                         <a>
@@ -35,17 +39,22 @@
                             +1
                         </button>
                     </div>
+                    <div>
+                        <a>
+                            Current height : 
+                        </a>
+                        <a id = "js-height"></a>
+                    </div>
                     <div class = "export">
                         <button id = "js-copy">
                             Copy
                         </button>
-                        <!-- <button id = "js-download">
+                        <button id = "js-download">
                             Download as a text file
-                        </button> -->
+                        </button>
                     </div>
                 </div>
-                <div id = "js-table">
-                </div>
+                    <div id = "js-table"></div>
                 <div class = "buttons">
                     <button id = "js-reset">
                         Reset
