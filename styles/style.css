@@ -12,20 +12,12 @@ h1{
     background-color: rgb(255, 73, 73);
 }
 
-.main{
-    margin: auto 10%;
-}
-
 .buttons{
     text-align: center;
 }
 
 .selection{
     margin: 10px auto;
-}
-
-.control{
-    
 }
 
 .export{
@@ -36,6 +28,7 @@ h1{
     margin: 5% auto;
     text-align: center;
     line-height: 0px;
+    white-space: nowrap;
 }
 
 .pixel{
