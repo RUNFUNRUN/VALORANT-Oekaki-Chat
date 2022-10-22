@@ -11,4 +11,4 @@ VALORANTのアスキーアートを簡単に作成できるWebアプリケーシ
 
 This is a web application that allows you to easily create ASCII art for VALORANT.
 
-If you have any questions, please contact us on [Twitter](https://twitter.com/GRAPH_fps).
+If you have any questions, please contact me on [Twitter](https://twitter.com/GRAPH_fps).
