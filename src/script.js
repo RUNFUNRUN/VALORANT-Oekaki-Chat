@@ -1,7 +1,8 @@
 (() => {
     const FullHdW = 26;
-    const stretchW = 27;
-    const maxW = stretchW;
+    const StretchedW = 27;
+    
+    const maxW = StretchedW > FullHdW ? StretchedW : FullHdW;
     const maxH = 13;
 
     const defaultH = 7;
@@ -66,8 +67,8 @@
             if ($this === "FullHD") {
                 W = FullHdW;
                 console.log($elem.value);
-            } else if ($this === "stretch") {
-                W = stretchW;
+            } else if ($this === "stretched") {
+                W = StretchedW;
                 console.log($elem.value);
             }
             updateTable();
