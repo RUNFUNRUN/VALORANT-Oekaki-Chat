@@ -21,7 +21,7 @@ button, option, select{
     border: 1px solid rgb(73, 137, 255);
 }
 
-button:active{
+.actionClicked:active{
     background-color: rgb(73, 137, 255);
     color: white;
 }
