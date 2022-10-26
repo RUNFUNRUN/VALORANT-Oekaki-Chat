@@ -1,21 +1,23 @@
 body{
-    font-family: cursive;
+    font-family: "Times New Roman";
     margin: auto;
     background-color: aliceblue;
-    font-size: 120%;
+    font-size: 150%;
 }
 
 h1{
+    font-family: cursive;
     text-align: center;
     font-size: 300%;
     margin: auto;
+    margin-bottom: 30px;
     padding: 20px;
     color: white;
     background-color: rgb(255, 73, 73);
 }
 
 button, option, select{
-    font-family: cursive;
+    font-family: "Times New Roman";
     font-size: 100%;
     background-color: rgb(212, 243, 243);
     border: 1px solid rgb(73, 137, 255);
