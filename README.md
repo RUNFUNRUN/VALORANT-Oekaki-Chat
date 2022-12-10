@@ -1,3 +1,7 @@
+# 生JSver
+
+Reactで書き換え済
+
 # VALORANT-Oekaki-Chat
 
 
