@@ -6,7 +6,7 @@ body{
 }
 
 h1{
-    font-family: cursive;
+    font-family: Impact;
     text-align: center;
     font-size: 300%;
     margin: auto;
@@ -16,11 +16,25 @@ h1{
     background-color: rgb(255, 73, 73);
 }
 
+h2{
+    border-bottom: solid 3px black;
+}
+
 button, option, select{
     font-family: "Times New Roman";
     font-size: 100%;
     background-color: rgb(212, 243, 243);
     border: 1px solid rgb(73, 137, 255);
+    margin: 5px;
+}
+
+p{
+    margin: 5px;
+}
+
+footer{
+    text-align: center;
+    margin-top: 10px;
 }
 
 .actionClicked:active{
@@ -36,18 +50,23 @@ button, option, select{
     margin: 10px auto;
 }
 
+.control, .selection{
+    display: flex;
+    justify-content: center;
+}
+
 .export{
     margin: 10px auto;
 }
 
-#js-table{
+.canvas{
     margin: 3% auto;
     text-align: center;
     line-height: 0px;
     white-space: nowrap;
 }
 
-#js-reset{
+.reset{
     color: rgb(255, 0, 0);
 }
 
@@ -57,6 +76,7 @@ button, option, select{
     height: 2.5vw;
     border: 1px solid black;
     display: inline-block;
+    margin: 0;
 }
 
 .clicked{
@@ -71,7 +91,7 @@ button, option, select{
     display: none;
 }
 
-.explain{
+.about{
     text-align: left;
     margin: 3% auto;
     width: 50%;
@@ -83,11 +103,3 @@ button, option, select{
     border-left: solid 5px #ffbe32;
 }
 
-h2{
-    border-bottom: solid 3px black;
-}
-
-footer{
-    text-align: center;
-    margin-top: 10px;
-}
