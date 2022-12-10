@@ -25,11 +25,11 @@ button, option, select{
     font-size: 100%;
     background-color: rgb(212, 243, 243);
     border: 1px solid rgb(73, 137, 255);
-    margin: 5px;
+    margin: 0 3px;
 }
 
 p{
-    margin: 5px;
+    margin: 0;
 }
 
 footer{
