@@ -1,3 +1,4 @@
+/* DEFAULT MODE*/
 body{
     font-family: "Times New Roman";
     margin: auto;
@@ -101,5 +102,36 @@ footer{
     padding: 0.25em 0.5em;
     background: transparent;
     border-left: solid 5px #ffbe32;
+}
+
+.header-toggle {
+    position: absolute !important;
+    right: 15px;
+    top: 50px;
+    margin: auto;
+}
+
+.react-toggle--checked .react-toggle-track {
+    background-color: #000000 !important;
+  }
+
+/* DARK MODE*/
+
+body.dark-mode {
+    background-color: #333; 
+    color: white;
+}
+
+.dark-mode h1  {
+    color: rgb(0, 0, 0);
+}
+
+.dark-mode h2 {
+    border-bottom: solid 3px rgb(255, 255, 255);
+}
+
+.dark-mode p, .dark-mode a {
+    color: rgb(255, 255, 255);
+    
 }
 
