@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
+import { GoogleAnalytics } from './_components/GoogleAnalytics';
+import { Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,6 +33,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </ThemeProvider>
         <Toaster />
+        <Suspense fallback={<></>}>
+          <GoogleAnalytics />
+        </Suspense>
       </body>
     </html>
   );
