@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
-import { GoogleAnalytics } from './_components/GoogleAnalytics';
-import { Suspense } from 'react';
-
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -23,6 +21,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {process.env.NODE_ENV === 'production' && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />
+        )}
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -33,9 +36,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </ThemeProvider>
         <Toaster />
-        <Suspense fallback={<></>}>
-          <GoogleAnalytics />
-        </Suspense>
       </body>
     </html>
   );
