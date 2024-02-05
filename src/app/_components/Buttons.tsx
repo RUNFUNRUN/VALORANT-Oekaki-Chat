@@ -36,7 +36,9 @@ export const Buttons = ({
     document.body.removeChild(element);
   };
 
-  const handleReset = () => {};
+  const handleReset = () => {
+    setAsciiData(asciiData.map((row) => row.map(() => false)));
+  };
 
   return (
     <div className="w-[390px] md:w-[750px] lg:w-[1000px] mx-auto my-8">
