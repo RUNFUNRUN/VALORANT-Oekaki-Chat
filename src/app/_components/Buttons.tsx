@@ -41,15 +41,15 @@ export const Buttons = ({
   };
 
   return (
-    <div className="w-[390px] md:w-[750px] lg:w-[1000px] mx-auto my-8">
-      <div className="flex">
-        <Button className="ml-0" onClick={handleCopy}>
+    <div className='w-[390px] md:w-[750px] lg:w-[1000px] mx-auto my-8'>
+      <div className='flex'>
+        <Button className='ml-0' onClick={handleCopy}>
           Copy
         </Button>
-        <Button className="ml-4 mr-auto" onClick={handleDownload}>
+        <Button className='ml-4 mr-auto' onClick={handleDownload}>
           Download
         </Button>
-        <Button className="mr-0" variant={'outline'} onClick={handleReset}>
+        <Button className='mr-0' variant={'outline'} onClick={handleReset}>
           Reset
         </Button>
       </div>

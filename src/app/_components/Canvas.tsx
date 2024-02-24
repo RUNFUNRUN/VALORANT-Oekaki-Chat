@@ -14,13 +14,13 @@ export const Canvas = ({
   height: Height;
 }) => {
   return (
-    <div className="min-w-[405px] md:min-w-[810px] lg:min-w-[1080px] text-center">
+    <div className='min-w-[405px] md:min-w-[810px] lg:min-w-[1080px] text-center'>
       {asciiData.map((row, i) => {
         if (i >= height) {
           return null;
         }
         return (
-          <div key={i} className="h-[15px] md:h-[30px] lg:h-[40px]">
+          <div key={i} className='h-[15px] md:h-[30px] lg:h-[40px]'>
             {row.map((active, j) => {
               if (j >= width) {
                 return null;

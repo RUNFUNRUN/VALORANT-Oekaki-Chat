@@ -15,43 +15,43 @@ export const Setting = ({
   setHeight: Dispatch<SetStateAction<Height>>;
 }) => {
   return (
-    <div className="w-[390px] md:w-[750px] lg:w-[1000px] mx-auto my-8">
-      <Label htmlFor="resolution" className="text-xl font-bold">
+    <div className='w-[390px] md:w-[750px] lg:w-[1000px] mx-auto my-8'>
+      <Label htmlFor='resolution' className='text-xl font-bold'>
         Resolution
       </Label>
-      <RadioGroup defaultValue="fullhd" id="resolution">
-        <div className="flex items-center space-x-2">
+      <RadioGroup defaultValue='fullhd' id='resolution'>
+        <div className='flex items-center space-x-2'>
           <RadioGroupItem
-            value="fullhd"
-            id="r1"
+            value='fullhd'
+            id='r1'
             onClick={() => {
               setResolution('fullhd');
             }}
           />
-          <Label htmlFor="r1" className="text-xl">
+          <Label htmlFor='r1' className='text-xl'>
             Full HD
           </Label>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className='flex items-center space-x-2'>
           <RadioGroupItem
-            value="stretch"
-            id="r2"
+            value='stretch'
+            id='r2'
             onClick={() => {
               setResolution('stretch');
             }}
           />
-          <Label htmlFor="r2" className="text-xl">
+          <Label htmlFor='r2' className='text-xl'>
             Stretch
           </Label>
         </div>
       </RadioGroup>
-      <Label htmlFor="height" className="text-xl">
-        <span className="font-bold">Height</span> (1-13 default: 7)
+      <Label htmlFor='height' className='text-xl'>
+        <span className='font-bold'>Height</span> (1-13 default: 7)
       </Label>
-      <div id="height" className="flex">
+      <div id='height' className='flex'>
         <Input
-          className="w-16 mr-8 ml-0"
-          type="number"
+          className='w-16 mr-8 ml-0'
+          type='number'
           value={height}
           onChange={(e) => {
             if (height === 13 && Number(e.target.value) > 13) {
