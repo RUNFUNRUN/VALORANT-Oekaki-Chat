@@ -27,6 +27,7 @@
     "i": "^0.3.7",
     "lucide-react": "^0.321.0",
     "next": "14.0.3",
+    "next-share": "^0.27.0",
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",

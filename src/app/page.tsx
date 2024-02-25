@@ -1,6 +1,7 @@
 import { Lobster } from 'next/font/google';
 import { Header } from './_components/Header';
 import { OekakiChat } from './_components/OekakiChat';
+import { Share } from './_components/Share';
 import Link from 'next/link';
 
 const lobstar = Lobster({ weight: '400', subsets: ['latin'] });
@@ -13,6 +14,7 @@ export default function Home() {
         &quot;Oekaki&quot; means &quot;drawing&quot; in Japanese.
       </p>
       <OekakiChat />
+      <Share />
       <footer className='mb-2 mt-auto text-center text-xl font-bold'>
         <p>
           Made by RUNFUNRUN |{' '}
