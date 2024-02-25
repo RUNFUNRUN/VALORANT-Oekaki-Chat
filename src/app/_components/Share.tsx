@@ -18,7 +18,7 @@ import {
 export const Share = () => {
   return (
     <div className='mx-auto'>
-      <p className='font-bold text-2xl text-center my-2'>Please share!</p>
+      <p className='font-bold text-2xl text-center my-2'>Please share this with your friends!</p>
       <div className='flex gap-4'>
         <TwitterShareButton
           url={'https://www.valorant-oekaki-chat.net/'}
