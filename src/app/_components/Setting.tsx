@@ -19,7 +19,7 @@ export const Setting = ({
       <Label htmlFor='resolution' className='text-xl font-bold'>
         Resolution
       </Label>
-      <RadioGroup defaultValue='fullhd' id='resolution'>
+      <RadioGroup defaultValue='fullhd' id='resolution' className='flex gap-4'>
         <div className='flex items-center space-x-2'>
           <RadioGroupItem
             value='fullhd'
