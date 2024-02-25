@@ -3,6 +3,7 @@ import { Header } from './_components/Header';
 import { OekakiChat } from './_components/OekakiChat';
 import { Share } from './_components/Share';
 import Link from 'next/link';
+import { OpinionBox } from './_components/OpinionBox';
 
 const lobstar = Lobster({ weight: '400', subsets: ['latin'] });
 
@@ -15,6 +16,7 @@ export default function Home() {
       </p>
       <OekakiChat />
       <Share />
+      <OpinionBox />
       <footer className='mb-2 mt-auto text-center text-xl font-bold'>
         <p>
           Made by RUNFUNRUN |{' '}
