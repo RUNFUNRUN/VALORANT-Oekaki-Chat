@@ -23,7 +23,7 @@ export const Share = () => {
         <TwitterShareButton
           url={'https://www.valorant-oekaki-chat.net/'}
           title={'You can make ASCII art of VALORANT on this website!'}
-          hashtags={['VALORANT', 'VALORANT募集']}
+          hashtags={['VALORANT', 'valorant-oekaki-chat', 'VALORANT募集']}
         >
           <TwitterIcon size={40} round />
         </TwitterShareButton>
