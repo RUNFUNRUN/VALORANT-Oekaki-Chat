@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     images: '/og.png',
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
