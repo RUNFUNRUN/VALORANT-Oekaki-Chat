@@ -14,7 +14,7 @@ export const POST = async (req: NextRequest) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: 'valo-oekaki-chat opinion box',
+        username: 'valorant-oekaki-chat opinion box',
         content: '```\n' + content + '\n```',
       }),
     });
