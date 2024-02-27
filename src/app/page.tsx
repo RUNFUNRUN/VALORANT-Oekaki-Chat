@@ -4,6 +4,7 @@ import { OekakiChat } from './_components/OekakiChat';
 import { Share } from './_components/Share';
 import Link from 'next/link';
 import { OpinionBox } from './_components/OpinionBox';
+import { DonateButton } from './_components/DonateButton';
 
 const lobstar = Lobster({ weight: '400', subsets: ['latin'] });
 
@@ -17,6 +18,7 @@ export default function Home() {
       <OekakiChat />
       <Share />
       <OpinionBox />
+      <DonateButton />
       <footer className='mb-2 mt-auto text-center text-xl font-bold'>
         <p>
           Made by RUNFUNRUN |{' '}
