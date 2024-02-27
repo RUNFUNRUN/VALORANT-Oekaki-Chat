@@ -7,4 +7,4 @@ const withPWA = createPWA({
   disable: process.env.NODE_ENV === 'development',
 });
 
-export default withPWA;
+export default withPWA();
