@@ -6,20 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
-  title: 'VALORANT Oekaki Chat',
-  description: 'VALORANT ASCII art generator | "Oekaki" means "drawing" in Japanese.',
-  openGraph: {
-    images: '/og.png',
-  },
-  twitter: {
-    images: '/og.png',
-  },
-  manifest: '/manifest.json',
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang='en'>
       {process.env.NODE_ENV === 'production' && (
@@ -38,4 +25,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   );
-}
+};
+
+export default Layout;
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  title: 'VALORANT Oekaki Chat',
+  description: 'VALORANT ASCII art generator | "Oekaki" means "drawing" in Japanese.',
+  openGraph: {
+    images: '/og.png',
+  },
+  twitter: {
+    images: '/og.png',
+  },
+  manifest: '/manifest.json',
+};

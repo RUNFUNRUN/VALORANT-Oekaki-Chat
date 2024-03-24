@@ -8,7 +8,7 @@ import { DonateButton } from './_components/DonateButton';
 
 const lobstar = Lobster({ weight: '400', subsets: ['latin'] });
 
-export default function Home() {
+const Home = () => {
   return (
     <main className='min-h-screen flex flex-col'>
       <Header />
@@ -36,4 +36,6 @@ export default function Home() {
       </footer>
     </main>
   );
-}
+};
+
+export default Home;
