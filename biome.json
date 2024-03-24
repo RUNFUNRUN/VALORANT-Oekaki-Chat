@@ -3,12 +3,14 @@
   "organizeImports": {
     "enabled": true
   },
+  "files": {
+    "ignore": ["node_modules", ".next", "public"]
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": true,
     "indentStyle": "space",
-    "indentWidth": 2,
-    "ignore": ["node_modules", ".next"]
+    "indentWidth": 2
   },
   "javascript": {
     "formatter": {
@@ -21,7 +23,6 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["node_modules", ".next"],
     "rules": {
       "recommended": true
     }
