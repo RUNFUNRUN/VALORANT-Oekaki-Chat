@@ -22,4 +22,4 @@ If you have any questions, please contact me on [Twitter](https://twitter.com/GR
 
 - shadcn/ui
 
-- eslint, prettier
+- biomejs
