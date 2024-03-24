@@ -13,5 +13,6 @@ export type OpinionBoxData = {
 
 export type OpinionBoxResponse = {
   success: boolean;
+  // biome-ignore lint: error type is any
   error?: any;
 };

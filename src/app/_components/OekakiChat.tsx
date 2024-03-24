@@ -1,10 +1,10 @@
 'use client';
 
+import type { AsciiData, Height, Resolution } from '@/types';
 import { useState } from 'react';
+import { Buttons } from './Buttons';
 import { Canvas } from './Canvas';
 import { Setting } from './Setting';
-import { AsciiData, Height, Resolution } from '@/types';
-import { Buttons } from './Buttons';
 
 export const OekakiChat = () => {
   const fullhdWidth = 26;
@@ -29,7 +29,11 @@ export const OekakiChat = () => {
 
   return (
     <div>
-      <Setting setResolution={setResolution} height={height} setHeight={setHeight} />
+      <Setting
+        setResolution={setResolution}
+        height={height}
+        setHeight={setHeight}
+      />
       <Canvas
         asciiData={asciiData}
         setAsciiData={setAsciiData}

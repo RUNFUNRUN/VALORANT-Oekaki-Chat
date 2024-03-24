@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
+import type { AsciiData, Height } from '@/types';
+import type { Dispatch, SetStateAction } from 'react';
 import { Piece } from './Piece';
-import { AsciiData, Height } from '@/types';
 
 export const Canvas = ({
   asciiData,
@@ -20,14 +20,14 @@ export const Canvas = ({
           return null;
         }
         return (
-          <div key={i} className='h-[15px] md:h-[30px] lg:h-[40px]'>
+          <div key={i.toString()} className='h-[15px] md:h-[30px] lg:h-[40px]'>
             {row.map((active, j) => {
               if (j >= width) {
                 return null;
               }
               return (
                 <Piece
-                  key={j}
+                  key={j.toString()}
                   active={active}
                   xIndex={j}
                   yIndex={i}

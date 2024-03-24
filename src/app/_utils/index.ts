@@ -1,6 +1,10 @@
-import { AsciiData, Height } from '@/types';
+import type { AsciiData, Height } from '@/types';
 
-export const createAscii = (asciiData: AsciiData, width: number, height: Height) => {
+export const createAscii = (
+  asciiData: AsciiData,
+  width: number,
+  height: Height,
+) => {
   const grayChar = '░';
   const whiteChar = '█';
   let content = '';

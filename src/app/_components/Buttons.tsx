@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
-import { AsciiData, Height } from '@/types';
-import { Dispatch, SetStateAction } from 'react';
-import { createAscii } from '../_utils';
 import { useToast } from '@/components/ui/use-toast';
+import type { AsciiData, Height } from '@/types';
+import type { Dispatch, SetStateAction } from 'react';
+import { createAscii } from '../_utils';
 
 export const Buttons = ({
   asciiData,

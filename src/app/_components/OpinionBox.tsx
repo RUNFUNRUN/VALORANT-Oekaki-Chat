@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { OpinionBoxData, OpinionBoxResponse } from '@/types';
+import type { OpinionBoxData, OpinionBoxResponse } from '@/types';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -54,14 +54,16 @@ export const OpinionBox = () => {
     <div className='text-center'>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <button className='text-xl font-bold underline my-4'>
+          <button type='button' className='text-xl font-bold underline my-4'>
             Click here to let me know what you think!
           </button>
         </DialogTrigger>
         <DialogContent className='sm:max-w-[500px]'>
           <DialogHeader>
             <DialogTitle className='text-xl'>Opinion box</DialogTitle>
-            <DialogDescription className='text-lg'>Let me know what you think!</DialogDescription>
+            <DialogDescription className='text-lg'>
+              Let me know what you think!
+            </DialogDescription>
           </DialogHeader>
           <Textarea
             className='resize-none'
@@ -72,7 +74,11 @@ export const OpinionBox = () => {
           />
           <DialogFooter>
             <Button onClick={handleClick} disabled={able} className='sm:w-24'>
-              {loading ? <Loader2 className='h-8 w-8 animate-spin' /> : 'Submit'}
+              {loading ? (
+                <Loader2 className='h-8 w-8 animate-spin' />
+              ) : (
+                'Submit'
+              )}
             </Button>
           </DialogFooter>
         </DialogContent>

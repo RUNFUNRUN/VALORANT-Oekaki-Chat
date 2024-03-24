@@ -1,10 +1,10 @@
 import { Lobster } from 'next/font/google';
+import Link from 'next/link';
+import { DonateButton } from './_components/DonateButton';
 import { Header } from './_components/Header';
 import { OekakiChat } from './_components/OekakiChat';
-import { Share } from './_components/Share';
-import Link from 'next/link';
 import { OpinionBox } from './_components/OpinionBox';
-import { DonateButton } from './_components/DonateButton';
+import { Share } from './_components/Share';
 
 const lobstar = Lobster({ weight: '400', subsets: ['latin'] });
 
@@ -22,7 +22,10 @@ const Home = () => {
       <footer className='mb-2 mt-auto text-center text-xl font-bold'>
         <p>
           Made by RUNFUNRUN |{' '}
-          <Link href='https://twitter.com/GRAPH_fps' className='text-blue-500 underline'>
+          <Link
+            href='https://twitter.com/GRAPH_fps'
+            className='text-blue-500 underline'
+          >
             Twitter
           </Link>{' '}
           |{' '}

@@ -1,5 +1,5 @@
-import { OpinionBoxData, OpinionBoxResponse } from '@/types';
-import { NextRequest, NextResponse } from 'next/server';
+import type { OpinionBoxData, OpinionBoxResponse } from '@/types';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const POST = async (req: NextRequest) => {
   const json: OpinionBoxData = await req.json();
@@ -15,11 +15,12 @@ export const POST = async (req: NextRequest) => {
       },
       body: JSON.stringify({
         username: 'valorant-oekaki-chat opinion box',
-        content: '```\n' + content + '\n```',
+        content: `\`\`\`\n${content}\n\`\`\``,
       }),
     });
     const resJson: OpinionBoxResponse = { success: true };
     return NextResponse.json(resJson, { status: 200 });
+    // biome-ignore lint: error type is any
   } catch (err: any) {
     const resJson: OpinionBoxResponse = { success: false, error: err };
     return NextResponse.json(resJson, { status: 500 });

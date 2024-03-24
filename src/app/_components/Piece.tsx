@@ -1,6 +1,6 @@
-import { AsciiData } from '@/types';
+import type { AsciiData } from '@/types';
 import { useTheme } from 'next-themes';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 
 export const Piece = ({
   active,
@@ -34,15 +34,21 @@ export const Piece = ({
   if (active) {
     return (
       <button
-        className={`${currentTheme === 'dark' ? 'bg-gray-300' : 'bg-white'} w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black`}
+        type='button'
+        className={`${
+          currentTheme === 'dark' ? 'bg-gray-300' : 'bg-white'
+        } w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black`}
         onClick={handleClick}
-      ></button>
+      />
     );
   }
   return (
     <button
-      className={`${currentTheme === 'dark' ? 'bg-gray-600' : 'bg-gray-400'} w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black`}
+      type='button'
+      className={`${
+        currentTheme === 'dark' ? 'bg-gray-600' : 'bg-gray-400'
+      } w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black`}
       onClick={handleClick}
-    ></button>
+    />
   );
 };

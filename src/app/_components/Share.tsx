@@ -1,18 +1,18 @@
 'use client';
 
 import {
-  TwitterShareButton,
-  TwitterIcon,
-  RedditShareButton,
-  RedditIcon,
-  FacebookShareButton,
   FacebookIcon,
-  TelegramShareButton,
+  FacebookShareButton,
+  RedditIcon,
+  RedditShareButton,
   TelegramIcon,
-  WeiboShareButton,
+  TelegramShareButton,
+  TwitterIcon,
+  TwitterShareButton,
   WeiboIcon,
-  WhatsappShareButton,
+  WeiboShareButton,
   WhatsappIcon,
+  WhatsappShareButton,
 } from 'next-share';
 
 export const Share = () => {
