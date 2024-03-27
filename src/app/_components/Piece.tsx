@@ -16,7 +16,9 @@ export const Piece = ({
   setAsciiData: Dispatch<SetStateAction<AsciiData>>;
 }) => {
   const { theme, systemTheme } = useTheme();
-  const [currentTheme, setCurrentTheme] = useState<string | undefined>(theme);
+  const [currentTheme, setCurrentTheme] = useState<string | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     if (theme !== 'system') {
@@ -31,6 +33,7 @@ export const Piece = ({
     newAsciiData[yIndex][xIndex] = !newAsciiData[yIndex][xIndex];
     setAsciiData(newAsciiData);
   };
+
   if (active) {
     return (
       <button
