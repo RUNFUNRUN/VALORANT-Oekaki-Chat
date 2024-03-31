@@ -1,5 +1,5 @@
 import { Anton } from 'next/font/google';
-import { ToggleTheme } from './ToggleTheme';
+import { ToggleTheme } from './toggle-theme';
 
 const anton = Anton({ weight: '400', subsets: ['latin'] });
 

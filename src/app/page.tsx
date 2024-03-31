@@ -1,10 +1,10 @@
 import { Lobster } from 'next/font/google';
-import { DonateButton } from './_components/DonateButton';
-import { Footer } from './_components/Footer';
-import { Header } from './_components/Header';
-import { OekakiChat } from './_components/OekakiChat';
-import { OpinionBox } from './_components/OpinionBox';
-import { Share } from './_components/Share';
+import { DonateButton } from './_components/donate-button';
+import { Footer } from './_components/footer';
+import { Header } from './_components/header';
+import { OekakiChat } from './_components/oekaki-chat';
+import { OpinionBox } from './_components/opinion-box';
+import { Share } from './_components/share';
 
 const lobstar = Lobster({ weight: '400', subsets: ['latin'] });
 

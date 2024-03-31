@@ -1,6 +1,6 @@
 import type { AsciiData, Height } from '@/types';
 import type { Dispatch, SetStateAction } from 'react';
-import { Piece } from './Piece';
+import { Piece } from './piece';
 
 export const Canvas = ({
   asciiData,

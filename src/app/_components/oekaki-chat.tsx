@@ -2,9 +2,9 @@
 
 import type { AsciiData, Height, Resolution } from '@/types';
 import { useState } from 'react';
-import { Buttons } from './Buttons';
-import { Canvas } from './Canvas';
-import { Setting } from './Setting';
+import { Buttons } from './buttons';
+import { Canvas } from './canvas';
+import { Setting } from './setting';
 
 export const OekakiChat = () => {
   const fullhdWidth = 26;
