@@ -62,7 +62,11 @@ export const OpinionBox = () => {
           <DialogHeader>
             <DialogTitle className='text-xl'>Opinion box</DialogTitle>
             <DialogDescription className='text-lg'>
-              Let me know what you think!
+              <p>Let me know what you think!</p>
+              <p>
+                If you want a reply, write to me with your contact information
+                or contact me on social media at Portforio in the footer.
+              </p>
             </DialogDescription>
           </DialogHeader>
           <Textarea
