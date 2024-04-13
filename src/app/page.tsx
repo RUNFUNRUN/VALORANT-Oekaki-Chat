@@ -2,6 +2,7 @@ import { Lobster } from 'next/font/google';
 import { DonateButton } from './_components/donate-button';
 import { Footer } from './_components/footer';
 import { Header } from './_components/header';
+import { Info } from './_components/info';
 import { OekakiChat } from './_components/oekaki-chat';
 import { OpinionBox } from './_components/opinion-box';
 import { Share } from './_components/share';
@@ -16,6 +17,7 @@ const Home = () => {
         &quot;Oekaki&quot; means &quot;drawing&quot; in Japanese.
       </p>
       <OekakiChat />
+      <Info />
       <Share />
       <OpinionBox />
       <DonateButton />
