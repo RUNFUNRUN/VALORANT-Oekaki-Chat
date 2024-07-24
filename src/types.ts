@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
-export type Resolution = 'fullhd' | 'stretch';
+export type Resolution = 'fullhd' | 'stretched';
+
+export type DrawingMode = 'click' | 'drag';
 
 const heightSchema = z.number().int().min(1).max(13);
 export type Height = z.infer<typeof heightSchema>;
