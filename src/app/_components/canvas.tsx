@@ -1,5 +1,5 @@
 import type { AsciiData, DrawingMode, Height } from '@/types';
-import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 import { Piece } from './piece';
 
 export const Canvas = ({
