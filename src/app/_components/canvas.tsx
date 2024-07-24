@@ -1,5 +1,5 @@
-import type { AsciiData, Height } from '@/types';
-import type { Dispatch, SetStateAction } from 'react';
+import type { AsciiData, DrawingMode, Height } from '@/types';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 import { Piece } from './piece';
 
 export const Canvas = ({
@@ -7,12 +7,30 @@ export const Canvas = ({
   setAsciiData,
   width,
   height,
+  drawingMode,
 }: {
   asciiData: AsciiData;
   setAsciiData: Dispatch<SetStateAction<AsciiData>>;
   width: number;
   height: Height;
+  drawingMode: DrawingMode;
 }) => {
+  const [isMouseDown, setIsMouseDown] = useState(false);
+
+  useEffect(() => {
+    if (drawingMode === 'drag') {
+      const handleWindowMouseUp = () => {
+        setIsMouseDown(false);
+      };
+
+      window.addEventListener('mouseup', handleWindowMouseUp);
+
+      return () => {
+        window.removeEventListener('mouseup', handleWindowMouseUp);
+      };
+    }
+  }, [drawingMode]);
+
   return (
     <div className='min-w-[405px] md:min-w-[810px] lg:min-w-[1080px] text-center'>
       {asciiData.map((row, i) => {
@@ -33,6 +51,9 @@ export const Canvas = ({
                   yIndex={i}
                   asciiData={asciiData}
                   setAsciiData={setAsciiData}
+                  isMouseDown={isMouseDown}
+                  setIsMouseDown={setIsMouseDown}
+                  drawingMode={drawingMode}
                 />
               );
             })}

@@ -1,6 +1,6 @@
 'use client';
 
-import type { AsciiData, Height, Resolution } from '@/types';
+import type { AsciiData, DrawingMode, Height, Resolution } from '@/types';
 import { useState } from 'react';
 import { Buttons } from './buttons';
 import { Canvas } from './canvas';
@@ -8,9 +8,9 @@ import { Setting } from './setting';
 
 export const OekakiChat = () => {
   const fullhdWidth = 26;
-  const stretchWidth = 27;
+  const stretchedWidth = 27;
 
-  const maxW = fullhdWidth > stretchWidth ? fullhdWidth : stretchWidth;
+  const maxW = fullhdWidth > stretchedWidth ? fullhdWidth : stretchedWidth;
   const maxH = 13;
   const defaultAsciiData = (): AsciiData => {
     const data = new Array(maxH);
@@ -25,6 +25,7 @@ export const OekakiChat = () => {
 
   const [asciiData, setAsciiData] = useState<AsciiData>(defaultAsciiData());
   const [resolution, setResolution] = useState<Resolution>('fullhd');
+  const [drawingMode, setDrawingMode] = useState<DrawingMode>('click');
   const [height, setHeight] = useState<Height>(7);
 
   return (
@@ -33,17 +34,19 @@ export const OekakiChat = () => {
         setResolution={setResolution}
         height={height}
         setHeight={setHeight}
+        setDrawingMode={setDrawingMode}
       />
       <Canvas
         asciiData={asciiData}
         setAsciiData={setAsciiData}
-        width={resolution === 'fullhd' ? fullhdWidth : stretchWidth}
+        width={resolution === 'fullhd' ? fullhdWidth : stretchedWidth}
         height={height}
+        drawingMode={drawingMode}
       />
       <Buttons
         asciiData={asciiData}
         setAsciiData={setAsciiData}
-        width={resolution === 'fullhd' ? fullhdWidth : stretchWidth}
+        width={resolution === 'fullhd' ? fullhdWidth : stretchedWidth}
         height={height}
       />
     </div>
