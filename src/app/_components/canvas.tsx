@@ -1,5 +1,5 @@
-import type { AsciiData, DrawingMode, Height } from '@/types';
-import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
+import type { AsciiData, DragMode, DrawingMode, Height } from '@/types';
+import { type Dispatch, useEffect, useState } from 'react';
 import { Piece } from './piece';
 
 export const Canvas = ({
@@ -8,12 +8,14 @@ export const Canvas = ({
   width,
   height,
   drawingMode,
+  dragMode,
 }: {
   asciiData: AsciiData;
-  setAsciiData: Dispatch<SetStateAction<AsciiData>>;
+  setAsciiData: Dispatch<AsciiData>;
   width: number;
   height: Height;
   drawingMode: DrawingMode;
+  dragMode: DragMode;
 }) => {
   const [isMouseDown, setIsMouseDown] = useState(false);
 
@@ -54,6 +56,7 @@ export const Canvas = ({
                   isMouseDown={isMouseDown}
                   setIsMouseDown={setIsMouseDown}
                   drawingMode={drawingMode}
+                  dragMode={dragMode}
                 />
               );
             })}
