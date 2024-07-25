@@ -2,8 +2,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
-import type { DragMode, DrawingMode, Height, Resolution } from '@/types';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import type { DragMode, DrawingMode, Height, Resolution } from '@/types';
 import { Eraser, PenLine } from 'lucide-react';
 import type { Dispatch } from 'react';
 
