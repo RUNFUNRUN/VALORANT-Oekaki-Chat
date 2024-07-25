@@ -33,7 +33,7 @@ export const Footer = () => {
           Blog
         </Link>
       </p>
-      <p className='lg:hidden mt-4'>&copy; 2022 RUNFUNRUN</p>
+      <p className='lg:hidden mt-4'>&copy; 2022-2024 RUNFUNRUN</p>
     </footer>
   );
 };
