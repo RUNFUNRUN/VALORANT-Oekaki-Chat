@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const Footer = () => {
   return (
     <footer className='mb-2 mt-auto text-center text-xl font-semibold lg:flex lg:justify-center lg:gap-10'>
-      <p className='hidden lg:block'>&copy; 2022 RUNFUNRUN</p>
+      <p className='hidden lg:block'>&copy; 2022-2024 RUNFUNRUN</p>
       <p>
         <Link
           href='https://twitter.com/GRAPH_fps'
