@@ -1,6 +1,12 @@
 'use client';
 
-import type { AsciiData, DrawingMode, Height, Resolution } from '@/types';
+import type {
+  AsciiData,
+  DragMode,
+  DrawingMode,
+  Height,
+  Resolution,
+} from '@/types';
 import { useState } from 'react';
 import { Buttons } from './buttons';
 import { Canvas } from './canvas';
@@ -26,6 +32,7 @@ export const OekakiChat = () => {
   const [asciiData, setAsciiData] = useState<AsciiData>(defaultAsciiData());
   const [resolution, setResolution] = useState<Resolution>('fullhd');
   const [drawingMode, setDrawingMode] = useState<DrawingMode>('click');
+  const [dragMode, setDragMode] = useState<DragMode>('pen');
   const [height, setHeight] = useState<Height>(7);
 
   return (
@@ -34,7 +41,11 @@ export const OekakiChat = () => {
         setResolution={setResolution}
         height={height}
         setHeight={setHeight}
+        drawingMode={drawingMode}
         setDrawingMode={setDrawingMode}
+        dragMode={dragMode}
+        setDragMode={setDragMode}
+        maxH={maxH}
       />
       <Canvas
         asciiData={asciiData}
@@ -42,6 +53,7 @@ export const OekakiChat = () => {
         width={resolution === 'fullhd' ? fullhdWidth : stretchedWidth}
         height={height}
         drawingMode={drawingMode}
+        dragMode={dragMode}
       />
       <Buttons
         asciiData={asciiData}

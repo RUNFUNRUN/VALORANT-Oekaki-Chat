@@ -1,6 +1,6 @@
-import type { AsciiData, DrawingMode } from '@/types';
+import type { AsciiData, DragMode, DrawingMode } from '@/types';
 import { useTheme } from 'next-themes';
-import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
+import { type Dispatch, useEffect, useState } from 'react';
 
 export const Piece = ({
   active,
@@ -11,15 +11,17 @@ export const Piece = ({
   isMouseDown,
   setIsMouseDown,
   drawingMode,
+  dragMode,
 }: {
   active: boolean;
   xIndex: number;
   yIndex: number;
   asciiData: AsciiData;
-  setAsciiData: Dispatch<SetStateAction<AsciiData>>;
+  setAsciiData: Dispatch<AsciiData>;
   isMouseDown: boolean;
   setIsMouseDown: Dispatch<boolean>;
   drawingMode: DrawingMode;
+  dragMode: DragMode;
 }) => {
   const { theme, systemTheme } = useTheme();
   const [currentTheme, setCurrentTheme] = useState<string | undefined>(
@@ -40,23 +42,43 @@ export const Piece = ({
     setAsciiData(newAsciiData);
   };
 
+  const enableAsciiData = () => {
+    const newAsciiData = [...asciiData];
+    newAsciiData[yIndex][xIndex] = true;
+    setAsciiData(newAsciiData);
+  };
+
+  const disableAsciiData = () => {
+    const newAsciiData = [...asciiData];
+    newAsciiData[yIndex][xIndex] = false;
+    setAsciiData(newAsciiData);
+  };
+
   const handleClick = () => {
-    if (drawingMode === 'click') {
-      toggleAsciiData();
+    if (drawingMode !== 'click') return;
+    toggleAsciiData();
+  };
+
+  const toggleAsciiDataDrag = () => {
+    switch (dragMode) {
+      case 'pen':
+        enableAsciiData();
+        break;
+      case 'eraser':
+        disableAsciiData();
+        break;
     }
   };
 
   const handleMouseDown = () => {
-    if (drawingMode === 'drag') {
-      setIsMouseDown(true);
-      toggleAsciiData();
-    }
+    if (drawingMode !== 'drag') return;
+    setIsMouseDown(true);
+    toggleAsciiDataDrag();
   };
 
   const handleMouseEnter = () => {
-    if (drawingMode === 'drag' && isMouseDown) {
-      toggleAsciiData();
-    }
+    if (drawingMode !== 'drag' || !isMouseDown) return;
+    toggleAsciiDataDrag();
   };
 
   if (active) {

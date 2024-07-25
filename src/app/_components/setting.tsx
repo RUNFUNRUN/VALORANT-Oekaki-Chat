@@ -2,19 +2,29 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
-import type { DrawingMode, Height, Resolution } from '@/types';
-import type { Dispatch, SetStateAction } from 'react';
+import type { DragMode, DrawingMode, Height, Resolution } from '@/types';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { Eraser, PenLine } from 'lucide-react';
+import type { Dispatch } from 'react';
 
 export const Setting = ({
   setResolution,
+  drawingMode,
   setDrawingMode,
+  dragMode,
+  setDragMode,
   height,
   setHeight,
+  maxH,
 }: {
-  setResolution: Dispatch<SetStateAction<Resolution>>;
-  setDrawingMode: Dispatch<SetStateAction<DrawingMode>>;
+  setResolution: Dispatch<Resolution>;
+  drawingMode: DrawingMode;
+  setDrawingMode: Dispatch<DrawingMode>;
+  dragMode: DragMode;
+  setDragMode: Dispatch<DragMode>;
   height: Height;
-  setHeight: Dispatch<SetStateAction<Height>>;
+  setHeight: Dispatch<Height>;
+  maxH: number;
 }) => {
   return (
     <div className='w-[390px] md:w-[750px] lg:w-[1000px] mx-auto my-4 flex flex-col gap-2'>
@@ -63,15 +73,15 @@ export const Setting = ({
             type='number'
             value={height}
             onChange={(e) => {
-              if (height === 13 && Number(e.target.value) > 13) {
-                setHeight(13);
+              if (height === maxH && Number(e.target.value) > maxH) {
+                setHeight(maxH);
                 return;
               }
               if (height === 1 && Number(e.target.value) < 1) {
                 setHeight(1);
                 return;
               }
-              if (Number(e.target.value) < 1 || Number(e.target.value) > 13) {
+              if (Number(e.target.value) < 1 || Number(e.target.value) > maxH) {
                 return;
               }
               setHeight(Number(e.target.value));
@@ -80,7 +90,7 @@ export const Setting = ({
           <Slider
             defaultValue={[height]}
             min={1}
-            max={13}
+            max={maxH}
             step={1}
             onValueChange={(e) => setHeight(e[0])}
           />
@@ -107,7 +117,7 @@ export const Setting = ({
               Click
             </Label>
           </div>
-          <div className='flex items-center space-x-2'>
+          <div className='flex items-center space-x-2 h-10'>
             <RadioGroupItem
               value='drag'
               id='drag'
@@ -118,6 +128,28 @@ export const Setting = ({
             <Label htmlFor='drag' className='text-xl'>
               Drag
             </Label>
+            {drawingMode === 'drag' ? (
+              <ToggleGroup type='single' variant='outline' value={dragMode}>
+                <ToggleGroupItem
+                  value='pen'
+                  aria-label='Toggle pen'
+                  onClick={() => {
+                    setDragMode('pen');
+                  }}
+                >
+                  <PenLine className='h-5 w-5' />
+                </ToggleGroupItem>
+                <ToggleGroupItem
+                  value='eraser'
+                  aria-label='Toggle eraser'
+                  onClick={() => {
+                    setDragMode('eraser');
+                  }}
+                >
+                  <Eraser className='h-5 w-5' />
+                </ToggleGroupItem>
+              </ToggleGroup>
+            ) : null}
           </div>
         </RadioGroup>
       </div>

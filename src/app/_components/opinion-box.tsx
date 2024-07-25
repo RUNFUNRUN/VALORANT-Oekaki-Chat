@@ -40,7 +40,7 @@ export const OpinionBox = () => {
     if (post.status !== 200) {
       toast({
         title: 'Failed to submit!',
-        description: resJson.error,
+        description: resJson.error as string,
         variant: 'destructive',
       });
       return;
