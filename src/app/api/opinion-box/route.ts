@@ -1,6 +1,8 @@
 import type { OpinionBoxData, OpinionBoxResponse } from '@/types';
 import { type NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 export const POST = async (req: NextRequest) => {
   const json: OpinionBoxData = await req.json();
   const content = json.content;
@@ -20,8 +22,7 @@ export const POST = async (req: NextRequest) => {
     });
     const resJson: OpinionBoxResponse = { success: true };
     return NextResponse.json(resJson, { status: 200 });
-    // biome-ignore lint: error type is any
-  } catch (err: any) {
+  } catch (err: unknown) {
     const resJson: OpinionBoxResponse = { success: false, error: err };
     return NextResponse.json(resJson, { status: 500 });
   }
