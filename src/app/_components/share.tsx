@@ -17,9 +17,9 @@ import {
 
 export const Share = () => {
   return (
-    <div className='mx-auto'>
+    <div>
       <p className='font-bold text-2xl text-center my-2'>Please share!</p>
-      <div className='flex gap-4 mx-auto'>
+      <div className='flex gap-4 justify-center'>
         <TwitterShareButton
           url={'https://www.valorant-oekaki-chat.net/'}
           title={'You can make ASCII art of VALORANT on this website!'}
