@@ -25,32 +25,32 @@ export const Header = () => {
         <p className={`text-2xl ${lobstar.className} mt-auto ml-4 mr-auto`}>
           &quot;Oekaki&quot; means &quot;drawing&quot; in Japanese.
         </p>
-        {/* <NavigationMenu className='font-bold'> */}
-        {/*   <NavigationMenuList> */}
-        {/*     <NavigationMenuItem> */}
-        {/*       <Link href='/posts' legacyBehavior passHref> */}
-        {/*         <NavigationMenuLink */}
-        {/*           className={cn( */}
-        {/*             navigationMenuTriggerStyle(), */}
-        {/*             'text-lg font-bold', */}
-        {/*           )} */}
-        {/*         > */}
-        {/*           Community */}
-        {/*         </NavigationMenuLink> */}
-        {/*       </Link> */}
-        {/*       <Link href='/' legacyBehavior passHref> */}
-        {/*         <NavigationMenuLink */}
-        {/*           className={cn( */}
-        {/*             navigationMenuTriggerStyle(), */}
-        {/*             'text-lg font-bold', */}
-        {/*           )} */}
-        {/*         > */}
-        {/*           My page */}
-        {/*         </NavigationMenuLink> */}
-        {/*       </Link> */}
-        {/*     </NavigationMenuItem> */}
-        {/*   </NavigationMenuList> */}
-        {/* </NavigationMenu> */}
+        <NavigationMenu className='font-bold'>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <Link href='/posts' legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    'text-lg font-bold',
+                  )}
+                >
+                  Community
+                </NavigationMenuLink>
+              </Link>
+              <Link href='/' legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    'text-lg font-bold',
+                  )}
+                >
+                  My page
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
         <div>
           <ToggleTheme />
         </div>
