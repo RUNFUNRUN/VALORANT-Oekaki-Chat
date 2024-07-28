@@ -28,7 +28,7 @@ export const Header = () => {
         <NavigationMenu className='font-bold'>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <Link href='/posts' legacyBehavior passHref>
+              <Link href='/community' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(
                     navigationMenuTriggerStyle(),
