@@ -7,11 +7,13 @@ import { OekakiChat } from './_components/oekaki-chat';
 import { OpinionBox } from './_components/opinion-box';
 import { Share } from './_components/share';
 
+export const runtime = 'edge';
+
 const lobstar = Lobster({ weight: '400', subsets: ['latin'] });
 
 const Home = () => {
   return (
-    <main className='min-h-screen flex flex-col'>
+    <main>
       <Header />
       <p className={`text-center mt-4 text-2xl ${lobstar.className}`}>
         &quot;Oekaki&quot; means &quot;drawing&quot; in Japanese.
