@@ -16,34 +16,57 @@ const anton = Anton({ weight: '400', subsets: ['latin'] });
 const lobstar = Lobster({ weight: '400', subsets: ['latin'] });
 
 export const Header = () => {
+  const navItems: {
+    title: string;
+    path: string;
+  }[] = [
+    {
+      title: 'Home',
+      path: '/',
+    },
+    {
+      title: 'Community',
+      path: '/community',
+    },
+  ];
+
   return (
     <header>
       <div className='container flex py-4'>
-        <h1 className={cn(anton.className, 'font-bold text-4xl')}>
-          VALORANT Oekaki Chat
-        </h1>
+        <Link href='/'>
+          <h1 className={cn(anton.className, 'font-bold text-4xl')}>
+            VALORANT Oekaki Chat
+          </h1>
+        </Link>
         <p className={`text-2xl ${lobstar.className} mt-auto ml-4 mr-auto`}>
           &quot;Oekaki&quot; means &quot;drawing&quot; in Japanese.
         </p>
         <NavigationMenu className='font-bold'>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <Link href='/community' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(
-                    navigationMenuTriggerStyle(),
-                    'text-lg font-bold',
-                  )}
-                >
-                  Community
-                </NavigationMenuLink>
-              </Link>
+              {navItems.map((navItem) => {
+                return (
+                  <Link
+                    href={navItem.path}
+                    legacyBehavior
+                    passHref
+                    key={navItem.path}
+                  >
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        'text-lg font-bold',
+                      )}
+                    >
+                      {navItem.title}
+                    </NavigationMenuLink>
+                  </Link>
+                );
+              })}
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <div>
-          <ToggleTheme />
-        </div>
+        <ToggleTheme />
       </div>
       <Separator />
     </header>
