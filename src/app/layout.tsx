@@ -2,11 +2,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/lib/utils';
-
-const inter = Inter({ subsets: ['latin'] });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,7 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {process.env.NODE_ENV === 'production' && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />
       )}
-      <body className={cn(inter.className, 'min-h-dvh flex flex-col')}>
+      <body>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
