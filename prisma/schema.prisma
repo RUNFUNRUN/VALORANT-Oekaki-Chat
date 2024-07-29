@@ -1,0 +1,66 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model User {
+  id            String     @id @default(cuid())
+  name          String?
+  email         String?    @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  Art           Art[]
+  Favorites     Favorite[]
+}
+
+model Art {
+  id          String     @id @default(cuid())
+  slug        Int        @unique @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  title       String
+  description String?
+  body        String
+  Favorites   Favorite[]
+  User        User       @relation(fields: [userId], references: [id])
+  userId      String
+
+  @@unique([id, userId])
+  @@index([createdAt(sort: Desc)])
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  art       Art      @relation(fields: [artId], references: [id])
+  userId    String
+  artId     String
+
+  @@unique([id, userId])
+  @@index([createdAt(sort: Desc)])
+}
