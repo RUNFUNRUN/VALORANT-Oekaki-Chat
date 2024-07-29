@@ -39,7 +39,7 @@ export const Header = () => {
             VALORANT Oekaki Chat
           </h1>
         </Link>
-        <p className={`text-2xl ${lobstar.className} mt-auto ml-4 mr-auto`}>
+        <p className={cn(lobstar.className, 'text-2xl mt-auto ml-4 mr-auto')}>
           &quot;Oekaki&quot; means &quot;drawing&quot; in Japanese.
         </p>
         <div className='flex gap-4'>
