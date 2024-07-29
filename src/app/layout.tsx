@@ -1,8 +1,9 @@
-import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { ThemeProvider } from '@/providers/theme-provider';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import './globals.css';
+import NextAuthProvider from '@/providers/next-auth-provider';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -17,7 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <NextAuthProvider>{children}</NextAuthProvider>
         </ThemeProvider>
         <Toaster />
       </body>
