@@ -1,3 +1,4 @@
+import { DonateButton } from '@/components/donate-button';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { News } from '@/components/news';
@@ -12,6 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <News />
       <Header />
       {children}
+      <DonateButton />
       <Footer />
     </main>
   );
