@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <footer className='mb-2 mt-auto text-center text-xl font-semibold lg:flex lg:justify-center lg:gap-10'>
       <p className='hidden lg:block'>&copy; 2022-2024 RUNFUNRUN</p>
-      <p className='flex'>
+      <div className='flex'>
         <Link
           href='https://twitter.com/GRAPH_fps'
           className='text-blue-500 hover:underline'
@@ -33,7 +33,7 @@ export const Footer = () => {
         >
           Blog
         </Link>
-      </p>
+      </div>
       <p className='lg:hidden mt-4'>&copy; 2022-2024 RUNFUNRUN</p>
     </footer>
   );
