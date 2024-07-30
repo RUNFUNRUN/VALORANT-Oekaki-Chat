@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import type { AsciiData, DragMode, DrawingMode } from '@/types';
 import { useTheme } from 'next-themes';
 import { type Dispatch, useEffect, useState } from 'react';
@@ -85,9 +86,10 @@ export const Piece = ({
     return (
       <button
         type='button'
-        className={`${
-          currentTheme === 'dark' ? 'bg-gray-300' : 'bg-white'
-        } w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black`}
+        className={cn(
+          currentTheme === 'dark' ? 'bg-gray-300' : 'bg-white',
+          'w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black',
+        )}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
         onMouseEnter={handleMouseEnter}
@@ -97,9 +99,10 @@ export const Piece = ({
   return (
     <button
       type='button'
-      className={`${
-        currentTheme === 'dark' ? 'bg-gray-600' : 'bg-gray-400'
-      } w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black`}
+      className={cn(
+        currentTheme === 'dark' ? 'bg-gray-600' : 'bg-gray-400',
+        'w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black',
+      )}
       onClick={handleClick}
       onMouseDown={handleMouseDown}
       onMouseEnter={handleMouseEnter}

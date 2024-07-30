@@ -1,4 +1,5 @@
-import { z } from 'zod';
+import type { z } from 'zod';
+import type { heightSchema } from './schemas';
 
 export type Resolution = 'fullhd' | 'stretched';
 
@@ -6,7 +7,6 @@ export type DrawingMode = 'click' | 'drag';
 
 export type DragMode = 'pen' | 'eraser';
 
-const heightSchema = z.number().int().min(1).max(13);
 export type Height = z.infer<typeof heightSchema>;
 
 export type AsciiData = boolean[][];
@@ -17,5 +17,11 @@ export type OpinionBoxData = {
 
 export type OpinionBoxResponse = {
   success: boolean;
+  error?: unknown;
+};
+
+export type ShareArtResponse = {
+  success: boolean;
+  slug?: string;
   error?: unknown;
 };

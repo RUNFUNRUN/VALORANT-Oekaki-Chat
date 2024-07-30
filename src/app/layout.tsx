@@ -1,4 +1,3 @@
-import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
@@ -20,7 +19,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         >
           <NextAuthProvider>{children}</NextAuthProvider>
         </ThemeProvider>
-        <Toaster />
       </body>
     </html>
   );
