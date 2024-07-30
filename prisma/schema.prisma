@@ -50,6 +50,8 @@ model Art {
   title       String
   description String?
   body        String
+  width       Int
+  height      Int
   favorites   Favorite[]
   user        User       @relation(fields: [userId], references: [id])
   userId      String

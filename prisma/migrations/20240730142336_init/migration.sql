@@ -38,6 +38,8 @@ CREATE TABLE "Art" (
     "title" TEXT NOT NULL,
     "description" TEXT,
     "body" TEXT NOT NULL,
+    "width" INTEGER NOT NULL,
+    "height" INTEGER NOT NULL,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "Art_pkey" PRIMARY KEY ("id")
