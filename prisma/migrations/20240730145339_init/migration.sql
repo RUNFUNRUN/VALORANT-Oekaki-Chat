@@ -37,7 +37,7 @@ CREATE TABLE "Art" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "title" TEXT NOT NULL,
     "description" TEXT,
-    "body" TEXT NOT NULL,
+    "body" BOOLEAN[],
     "width" INTEGER NOT NULL,
     "height" INTEGER NOT NULL,
     "userId" TEXT NOT NULL,

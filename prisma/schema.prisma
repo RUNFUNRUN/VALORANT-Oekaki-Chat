@@ -49,7 +49,7 @@ model Art {
   createdAt   DateTime   @default(now())
   title       String
   description String?
-  body        String
+  body        Boolean[]
   width       Int
   height      Int
   favorites   Favorite[]
