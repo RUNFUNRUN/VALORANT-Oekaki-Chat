@@ -7,16 +7,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/components/ui/use-toast';
-import type { AsciiData, Height, ShareArtResponse } from '@/types';
-import { createAscii } from '@/utils';
-import { Loader2 } from 'lucide-react';
-import { getSession, useSession } from 'next-auth/react';
-import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import type { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -25,8 +15,18 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { useRouter } from 'next/navigation';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/components/ui/use-toast';
 import { shareArtSchema } from '@/schemas';
+import type { AsciiData, Height, ShareArtResponse } from '@/types';
+import { createAscii } from '@/utils';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { type Dispatch, type SetStateAction, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import type { z } from 'zod';
 
 export const Buttons = ({
   asciiData,
@@ -98,7 +98,7 @@ export const Buttons = ({
       const data = (await result.json()) as ShareArtResponse;
       setShareLoading(false);
       setOpen(false);
-      router.push(`/posts/${data.slug}`);
+      router.push(`/community/${data.slug}`);
       toast({
         title: 'Submitted successfully!',
       });
