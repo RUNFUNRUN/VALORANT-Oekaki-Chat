@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
+import { cn } from '@/lib/utils';
 import { shareArtSchema } from '@/schemas';
 import type { AsciiData, Height, ShareArtResponse } from '@/types';
 import { createAscii } from '@/utils';
@@ -123,7 +124,12 @@ export const Buttons = ({
                 Share to community
               </Button>
             </DialogTrigger>
-            <DialogContent className='min-w-[600px] px-8'>
+            <DialogContent
+              className={cn(
+                width === 27 ? 'min-w-[606px]' : 'min-w-[586px]',
+                'px-8',
+              )}
+            >
               {status === 'authenticated' ? (
                 <Form {...shareForm}>
                   <DialogHeader>

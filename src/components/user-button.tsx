@@ -9,6 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
+import { Skeleton } from './ui/skeleton';
 
 export const UserButton = async () => {
   const session = await auth();
@@ -18,15 +19,16 @@ export const UserButton = async () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant='ghost' className='relative w-8 h-8 rounded-full'>
-            <Avatar className='w-8 h-8'>
-              <AvatarImage
-                src={
-                  session.user.image ??
-                  'https://source.boringavatars.com/marble/120'
-                }
-                alt={session.user.name ?? ''}
-              />
-            </Avatar>
+            {session.user.image ? (
+              <Avatar className='w-8 h-8'>
+                <AvatarImage
+                  src={session.user.image}
+                  alt={session.user.name ?? ''}
+                />
+              </Avatar>
+            ) : (
+              <Skeleton className='w-8 h-8 rounded-full' />
+            )}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='w-56' align='end' forceMount>

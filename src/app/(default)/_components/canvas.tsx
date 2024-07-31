@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import type { AsciiData, DragMode, DrawingMode, Height } from '@/types';
 import { type Dispatch, useEffect, useState } from 'react';
 import { Piece } from './piece';
@@ -34,13 +35,20 @@ export const Canvas = ({
   }, [drawingMode]);
 
   return (
-    <div className='min-w-[405px] md:min-w-[810px] lg:min-w-[1080px] text-center'>
+    <div
+      className={cn(
+        width === 27
+          ? 'w-[432px] md:w-[756px] lg:w-[1080px]'
+          : 'w-[416px] md:w-[728px] lg:w-[1040px]',
+        'mx-auto',
+      )}
+    >
       {asciiData.map((row, i) => {
         if (i >= height) {
           return null;
         }
         return (
-          <div key={i.toString()} className='h-[15px] md:h-[30px] lg:h-[40px]'>
+          <div key={i.toString()} className='h-4 md:h-7 lg:h-10'>
             {row.map((active, j) => {
               if (j >= width) {
                 return null;

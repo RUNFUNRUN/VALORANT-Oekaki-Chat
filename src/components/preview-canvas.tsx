@@ -1,33 +1,19 @@
 import { cn } from '@/lib/utils';
 import { AsciiData } from '@/types';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
 
 export const PreviewCanvas = ({
   asciiData,
   width,
   height,
 }: { asciiData: AsciiData; width: number; height: number }) => {
-  const { theme, systemTheme } = useTheme();
-  const [currentTheme, setCurrentTheme] = useState<string | undefined>(
-    undefined,
-  );
-
-  useEffect(() => {
-    if (theme !== 'system') {
-      setCurrentTheme(theme);
-    } else if (theme === 'system') {
-      setCurrentTheme(systemTheme);
-    }
-  }, [theme, systemTheme]);
   return (
-    <div className='min-w-[540px] text-center'>
+    <div className={cn(width === 27 ? 'w-[542px]' : 'w-[522px]', 'border')}>
       {asciiData.map((row, i) => {
         if (i >= height) {
           return null;
         }
         return (
-          <div key={i.toString()} className='h-[20px]'>
+          <div key={i.toString()} className='h-5'>
             {row.map((active, j) => {
               if (j >= width) {
                 return null;
@@ -37,10 +23,7 @@ export const PreviewCanvas = ({
                   <button
                     key={j.toString()}
                     disabled
-                    className={cn(
-                      currentTheme === 'dark' ? 'bg-gray-300' : 'bg-white',
-                      'w-[20px] h-[20px] m-0',
-                    )}
+                    className='bg-white dark:bg-gray-300 w-5 h-5 m-0'
                   />
                 );
               }
@@ -48,10 +31,7 @@ export const PreviewCanvas = ({
                 <button
                   key={j.toString()}
                   disabled
-                  className={cn(
-                    currentTheme === 'dark' ? 'bg-gray-600' : 'bg-gray-400',
-                    'w-[20px] h-[20px] m-0',
-                  )}
+                  className='bg-gray-400 dark:bg-gray-600 w-5 h-5 m-0'
                 />
               );
             })}

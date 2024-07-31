@@ -1,7 +1,5 @@
-import { cn } from '@/lib/utils';
 import type { AsciiData, DragMode, DrawingMode } from '@/types';
-import { useTheme } from 'next-themes';
-import { type Dispatch, useEffect, useState } from 'react';
+import type { Dispatch } from 'react';
 
 export const Piece = ({
   active,
@@ -24,19 +22,6 @@ export const Piece = ({
   drawingMode: DrawingMode;
   dragMode: DragMode;
 }) => {
-  const { theme, systemTheme } = useTheme();
-  const [currentTheme, setCurrentTheme] = useState<string | undefined>(
-    undefined,
-  );
-
-  useEffect(() => {
-    if (theme !== 'system') {
-      setCurrentTheme(theme);
-    } else if (theme === 'system') {
-      setCurrentTheme(systemTheme);
-    }
-  }, [theme, systemTheme]);
-
   const toggleAsciiData = () => {
     const newAsciiData = [...asciiData];
     newAsciiData[yIndex][xIndex] = !newAsciiData[yIndex][xIndex];
@@ -86,10 +71,7 @@ export const Piece = ({
     return (
       <button
         type='button'
-        className={cn(
-          currentTheme === 'dark' ? 'bg-gray-300' : 'bg-white',
-          'w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black',
-        )}
+        className='bg-white dark:bg-gray-300 w-4 h-4 md:w-7 sm:h-7 lg:w-10 lg:h-10 m-0 border border-black'
         onClick={handleClick}
         onMouseDown={handleMouseDown}
         onMouseEnter={handleMouseEnter}
@@ -99,10 +81,7 @@ export const Piece = ({
   return (
     <button
       type='button'
-      className={cn(
-        currentTheme === 'dark' ? 'bg-gray-600' : 'bg-gray-400',
-        'w-[15px] h-[15px] md:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] m-0 border border-black',
-      )}
+      className='bg-gray-400 dark:bg-gray-600  w-4 h-4 md:w-7 sm:h-7 lg:w-10 lg:h-10 m-0 border border-black'
       onClick={handleClick}
       onMouseDown={handleMouseDown}
       onMouseEnter={handleMouseEnter}
