@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from './ui/card';
+import { Skeleton } from './ui/skeleton';
 
 const ArtCard = () => {
   return (
@@ -22,4 +23,8 @@ const ArtCard = () => {
 
 export const ArtCards = () => {
   return <div>artcards</div>;
+};
+
+export const SkeletonCards = () => {
+  return <Skeleton />;
 };
