@@ -10,16 +10,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {process.env.NODE_ENV === 'production' && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />
       )}
-      <body>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='system'
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextAuthProvider>{children}</NextAuthProvider>
-        </ThemeProvider>
-      </body>
+      <ThemeProvider
+        attribute='class'
+        defaultTheme='system'
+        enableSystem
+        disableTransitionOnChange
+      >
+        <NextAuthProvider>{children}</NextAuthProvider>
+      </ThemeProvider>
     </html>
   );
 };

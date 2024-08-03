@@ -10,14 +10,16 @@ const inter = Inter({ subsets: ['latin'] });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className={cn(inter.className, 'min-h-dvh flex flex-col')}>
+    <body className={cn(inter.className, 'min-h-dvh flex flex-col')}>
       <News />
       <Header />
-      {children}
+      <main>
+        {children}
+        <DonateButton />
+        <Toaster />
+      </main>
       <Footer />
-      <DonateButton />
-      <Toaster />
-    </main>
+    </body>
   );
 };
 
