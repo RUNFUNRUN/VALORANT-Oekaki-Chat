@@ -2,8 +2,8 @@ import { ThemeProvider } from '@/providers/theme-provider';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import './globals.css';
-import NextAuthProvider from '@/providers/next-auth-provider';
 import { cn } from '@/lib/utils';
+import NextAuthProvider from '@/providers/next-auth-provider';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
