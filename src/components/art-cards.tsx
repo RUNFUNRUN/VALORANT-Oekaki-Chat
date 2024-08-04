@@ -51,6 +51,14 @@ const ArtCard = ({ art }: { art: Art }) => {
 };
 
 export const ArtCards = ({ arts }: { arts: Art[] }) => {
+  if (arts.length === 0) {
+    return (
+      <p className='text-center font-bold text-2xl'>
+        No content. Share your art with us!
+      </p>
+    );
+  }
+
   return (
     <div className='flex flex-col gap-4'>
       {arts.map((art) => (
