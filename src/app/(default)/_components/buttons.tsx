@@ -1,5 +1,5 @@
+import { CopyButton } from '@/components/copy-button';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 import type { AsciiData, Height } from '@/types';
 import { createAscii } from '@/utils';
 import type { Dispatch, SetStateAction } from 'react';
@@ -16,16 +16,6 @@ export const Buttons = ({
   width: number;
   height: Height;
 }) => {
-  const { toast } = useToast();
-
-  const handleCopy = () => {
-    const asciiString = createAscii(asciiData, width, height);
-    navigator.clipboard.writeText(asciiString);
-    toast({
-      title: 'Copied to clipboard!',
-    });
-  };
-
   const handleDownload = () => {
     const asciiString = createAscii(asciiData, width, height);
     const element: HTMLAnchorElement = document.createElement('a');
@@ -45,7 +35,7 @@ export const Buttons = ({
     <div className='w-[390px] md:w-[750px] lg:w-[1000px] mx-auto my-8'>
       <div className='flex justify-between'>
         <div className='flex gap-4'>
-          <Button onClick={handleCopy}>Copy</Button>
+          <CopyButton asciiData={asciiData} width={width} height={height} />
           <Button onClick={handleDownload}>Download</Button>
           <ShareButton asciiData={asciiData} width={width} height={height} />
         </div>
