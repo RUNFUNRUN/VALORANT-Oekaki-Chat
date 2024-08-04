@@ -63,6 +63,8 @@ export const ShareButton = ({
       );
   };
   const onSubmit = async (values: z.infer<typeof shareArtSchema>) => {
+    values.ascii = asciiData;
+
     setShareLoading(true);
     try {
       const result = await fetch('/api/share', {
