@@ -3,6 +3,10 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import './globals.css';
 import NextAuthProvider from '@/providers/next-auth-provider';
+import { cn } from '@/lib/utils';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,14 +14,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {process.env.NODE_ENV === 'production' && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />
       )}
-      <ThemeProvider
-        attribute='class'
-        defaultTheme='system'
-        enableSystem
-        disableTransitionOnChange
-      >
-        <NextAuthProvider>{children}</NextAuthProvider>
-      </ThemeProvider>
+      <body className={cn(inter.className, 'min-h-dvh flex flex-col')}>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextAuthProvider>{children}</NextAuthProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 };
