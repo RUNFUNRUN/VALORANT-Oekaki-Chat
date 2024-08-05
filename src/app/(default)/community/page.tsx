@@ -3,6 +3,8 @@ import { ArtCards, SkeletonCards } from '@/components/art-cards';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 const ArtsList = async () => {
   const arts = await prisma.art.findMany({
     orderBy: {
