@@ -64,6 +64,8 @@ export const ShareButton = ({
   };
   const onSubmit = async (values: z.infer<typeof shareArtSchema>) => {
     values.ascii = asciiData;
+    values.width = width;
+    values.height = height;
 
     setShareLoading(true);
     try {

@@ -18,11 +18,9 @@ export const createAscii = (
 
 export const flattenArray = (array: boolean[][]): boolean[] => array.flat();
 
-export const unflattenArray = (
-  array: boolean[],
-  cols = 27,
-  rows = 13,
-): boolean[][] => {
+export const unflattenArray = (array: boolean[]): boolean[][] => {
+  const cols = 27;
+  const rows = 13;
   const result: boolean[][] = [];
   for (let i = 0; i < rows; i++) {
     result.push(array.slice(i * cols, (i + 1) * cols));

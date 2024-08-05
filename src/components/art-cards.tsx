@@ -14,7 +14,7 @@ import {
 import { Skeleton } from './ui/skeleton';
 
 const ArtCard = ({ art }: { art: Art }) => {
-  const asciiData = unflattenArray(art.body, art.width);
+  const asciiData = unflattenArray(art.body);
   const date = formatDate(art.createdAt);
 
   return (
