@@ -30,7 +30,7 @@ export const Footer = () => {
         </Link>
         <Separator orientation='vertical' className='mx-2' />
         <Link
-          href='https://www.runfunrun.tech'
+          href='https://www.runfunrun.dev'
           className='text-blue-500 hover:underline'
         >
           Blog
