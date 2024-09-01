@@ -1,3 +1,4 @@
+import type { Art } from '@prisma/client';
 import type { z } from 'zod';
 import type { heightSchema } from './schemas';
 
@@ -24,4 +25,10 @@ export type ShareArtResponse = {
   success: boolean;
   slug?: string;
   error?: unknown;
+};
+
+export type ArtsResponse = {
+  succsess: boolean;
+  data?: Array<Art>;
+  next?: number;
 };

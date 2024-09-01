@@ -40,7 +40,14 @@ export const formatDate = (date: Date): string => {
   const locale = getUserLocale();
   const timeZone = getUserTimeZone();
 
-  return date.toLocaleDateString(locale, {
+  return date.toLocaleString(locale, {
     timeZone: timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
   });
 };

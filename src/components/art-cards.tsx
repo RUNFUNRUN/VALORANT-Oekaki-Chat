@@ -15,7 +15,7 @@ import { Skeleton } from './ui/skeleton';
 
 const ArtCard = ({ art }: { art: Art }) => {
   const asciiData = unflattenArray(art.body);
-  const date = formatDate(art.createdAt);
+  const date = formatDate(new Date(art.createdAt));
 
   return (
     <Card
@@ -69,5 +69,13 @@ export const ArtCards = ({ arts }: { arts: Art[] }) => {
 };
 
 export const SkeletonCards = () => {
-  return <Skeleton className='w-[586px] h-[330px] mx-auto' />;
+  return (
+    <div className='flex flex-col gap-4'>
+      {Array(3)
+        .fill(0)
+        .map((_, i) => (
+          <Skeleton className='w-[586px] h-[330px] mx-auto' key={i} />
+        ))}
+    </div>
+  );
 };

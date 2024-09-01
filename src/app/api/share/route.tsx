@@ -35,7 +35,7 @@ export const POST = auth(async (req) => {
   }
 
   const result = shareArtSchema.safeParse(await req.json());
-  if (!result ?? !result.data) {
+  if (!result || !result.data) {
     return NextResponse.json(
       { success: false, error: 'ascii data is valid' },
       { status: 500 },
