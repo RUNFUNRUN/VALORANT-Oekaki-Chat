@@ -63,7 +63,7 @@ export const InfiniteScrollArt = ({
             ? 'Loading more...'
             : hasNextPage
               ? 'Load Newer'
-              : 'Nothing more to load'}
+              : null}
         </button>
       </div>
       <div className='text-center mt-8'>
