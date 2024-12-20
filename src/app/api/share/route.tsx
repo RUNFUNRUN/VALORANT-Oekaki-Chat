@@ -5,8 +5,8 @@ import type { ShareArtResponse } from '@/types';
 import { flattenArray } from '@/utils';
 import { NextResponse } from 'next/server';
 
-export const POST = auth(async (req) => {
-  const session = req.auth;
+export const POST = async (req: Request) => {
+  const session = await auth();
   if (!session) {
     return NextResponse.json(
       { success: false, error: 'Not authenticated' },
@@ -59,4 +59,4 @@ export const POST = auth(async (req) => {
   };
 
   return NextResponse.json(resJson);
-});
+};
