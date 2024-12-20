@@ -21,7 +21,7 @@ export const OpinionBox = () => {
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState('');
   const { toast } = useToast();
-  const able = (text === '' ?? false) || loading;
+  const able = text ?? loading;
 
   const handleClick = async () => {
     setLoading(true);
