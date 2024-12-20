@@ -21,7 +21,7 @@ export const OpinionBox = () => {
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState('');
   const { toast } = useToast();
-  const able = text ?? loading;
+  const disable = text === '' || loading;
 
   const handleClick = async () => {
     setLoading(true);
@@ -77,7 +77,11 @@ export const OpinionBox = () => {
             }}
           />
           <DialogFooter>
-            <Button onClick={handleClick} disabled={able} className='sm:w-24'>
+            <Button
+              onClick={handleClick}
+              disabled={disable}
+              className='sm:w-24'
+            >
               {loading ? (
                 <Loader2 className='h-8 w-8 animate-spin' />
               ) : (
