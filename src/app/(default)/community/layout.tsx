@@ -1,14 +1,12 @@
-'use client';
-
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
-const queryClient = new QueryClient();
-
 const Layout = ({ children }: { children: ReactNode }) => {
-  return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
+  return <>{children}</>;
 };
 
 export default Layout;
+
+export const metadata: Metadata = {
+  title: 'VALORANT Oekaki Chat | Community',
+};

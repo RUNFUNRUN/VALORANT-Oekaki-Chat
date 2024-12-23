@@ -1,24 +1,25 @@
-'use client';
-
+import type { AppType } from '@/app/api/hono/[[...route]]/route';
 import { ArtCards, SkeletonCards } from '@/components/art-cards';
-import type { ArtsResponse, Resolution } from '@/types';
+import type { Art } from '@prisma/client';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { type InferResponseType, hc } from 'hono/client';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-export const InfiniteScrollArt = ({
-  resolution,
-}: { resolution: Resolution }) => {
+const client = hc<AppType>('/');
+
+export const InfiniteScrollArt = () => {
   const { ref, inView } = useInView();
 
   const fetchArts = async ({
     pageParam,
-  }: { pageParam: number }): Promise<ArtsResponse> => {
-    const seartchParams = new URLSearchParams();
-    seartchParams.set('cursor', pageParam.toString());
-    seartchParams.set('width', resolution === 'fullhd' ? '26' : '27');
+  }: { pageParam: number }): Promise<
+    InferResponseType<typeof client.api.hono.arts.$get, 200>
+  > => {
+    const res = await client.api.hono.arts.$get({
+      query: { cursor: pageParam.toString() },
+    });
 
-    const res = await fetch(`/api/arts/?${seartchParams}`);
     return res.json();
   };
 
@@ -49,9 +50,23 @@ export const InfiniteScrollArt = ({
     <p className='text-center'>Error: {error.message}</p>
   ) : (
     <>
-      {data.pages.map((page, i) => (
-        <ArtCards arts={page.data ?? []} key={i.toString()} />
-      ))}
+      {data.pages.map((page, i) => {
+        const arts: Art[] =
+          page.data !== undefined
+            ? page.data.map((art) => {
+                return {
+                  id: art.id,
+                  createdAt: new Date(art.createdAt),
+                  title: art.title,
+                  description: art.description,
+                  body: art.body,
+                  height: art.height,
+                  userId: art.userId,
+                };
+              })
+            : [];
+        return <ArtCards arts={arts} key={i.toString()} />;
+      })}
       <div className='text-center mt-8'>
         <button
           type='button'

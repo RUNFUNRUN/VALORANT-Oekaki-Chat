@@ -1,28 +1,18 @@
 'use client';
 
-import type {
-  AsciiData,
-  DragMode,
-  DrawingMode,
-  Height,
-  Resolution,
-} from '@/types';
+import { MAX_HEIGHT, WIDTH } from '@/config';
+import type { AsciiData, DragMode, DrawingMode, Height } from '@/types';
 import { useState } from 'react';
 import { Buttons } from './buttons';
 import { Canvas } from './canvas';
 import { Setting } from './setting';
 
 export const OekakiChat = () => {
-  const fullhdWidth = 26;
-  const stretchedWidth = 27;
-
-  const maxW = fullhdWidth > stretchedWidth ? fullhdWidth : stretchedWidth;
-  const maxH = 13;
   const defaultAsciiData = (): AsciiData => {
-    const data = new Array(maxH);
-    for (let i = 0; i < maxH; i++) {
-      data[i] = new Array(maxW);
-      for (let j = 0; j < maxW; j++) {
+    const data = new Array(MAX_HEIGHT);
+    for (let i = 0; i < MAX_HEIGHT; i++) {
+      data[i] = new Array(WIDTH);
+      for (let j = 0; j < WIDTH; j++) {
         data[i][j] = false;
       }
     }
@@ -30,27 +20,23 @@ export const OekakiChat = () => {
   };
 
   const [asciiData, setAsciiData] = useState<AsciiData>(defaultAsciiData());
-  const [resolution, setResolution] = useState<Resolution>('fullhd');
   const [drawingMode, setDrawingMode] = useState<DrawingMode>('click');
   const [dragMode, setDragMode] = useState<DragMode>('pen');
   const [height, setHeight] = useState<Height>(7);
 
   return (
-    <div>
+    <div className='w-[416px] md:w-[728px] lg:w-[1040px] mx-auto'>
       <Setting
-        setResolution={setResolution}
         height={height}
         setHeight={setHeight}
         drawingMode={drawingMode}
         setDrawingMode={setDrawingMode}
         dragMode={dragMode}
         setDragMode={setDragMode}
-        maxH={maxH}
       />
       <Canvas
         asciiData={asciiData}
         setAsciiData={setAsciiData}
-        width={resolution === 'fullhd' ? fullhdWidth : stretchedWidth}
         height={height}
         drawingMode={drawingMode}
         dragMode={dragMode}
@@ -58,7 +44,6 @@ export const OekakiChat = () => {
       <Buttons
         asciiData={asciiData}
         setAsciiData={setAsciiData}
-        width={resolution === 'fullhd' ? fullhdWidth : stretchedWidth}
         height={height}
       />
     </div>

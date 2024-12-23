@@ -23,7 +23,7 @@ export const Footer = () => {
         </Link>
         <Separator orientation='vertical' className='mx-2' />
         <Link
-          href='https://www.runfunrun.info'
+          href='https://runfun.run'
           className='text-blue-500 hover:underline'
         >
           Portfolio

@@ -15,7 +15,7 @@ import {
   WhatsappShareButton,
 } from 'next-share';
 
-export const Share = () => {
+export const SocialMedia = () => {
   return (
     <div>
       <p className='font-bold text-2xl text-center my-2'>Please share!</p>

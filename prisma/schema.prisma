@@ -20,6 +20,7 @@ model User {
   updatedAt     DateTime   @updatedAt
   Art           Art[]
   Favorite      Favorite[]
+  Comment       Comment[]
 }
 
 model Account {
@@ -45,22 +46,33 @@ model Account {
 
 model Art {
   id          String     @id @default(cuid())
-  slug        Int        @unique @default(autoincrement())
   createdAt   DateTime   @default(now())
   title       String
   description String?
   body        Boolean[]
-  width       Int
   height      Int
   favorites   Favorite[]
   user        User       @relation(fields: [userId], references: [id])
   userId      String
+  Comment     Comment[]
 
   @@unique([id, userId])
   @@index([createdAt(sort: Desc)])
 }
 
 model Favorite {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  art       Art      @relation(fields: [artId], references: [id])
+  userId    String
+  artId     String
+
+  @@unique([id, userId])
+  @@index([createdAt(sort: Desc)])
+}
+
+model Comment {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])

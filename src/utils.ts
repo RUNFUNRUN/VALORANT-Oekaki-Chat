@@ -1,15 +1,12 @@
 import type { AsciiData, Height } from '@/types';
+import { WIDTH } from './config';
 
-export const createAscii = (
-  asciiData: AsciiData,
-  width: number,
-  height: Height,
-) => {
+export const createAscii = (asciiData: AsciiData, height: Height) => {
   const grayChar = '░';
   const whiteChar = '█';
   let content = '';
   for (let i = 0; i < height; i++) {
-    for (let j = 0; j < width; j++) {
+    for (let j = 0; j < WIDTH; j++) {
       content += asciiData[i][j] === false ? grayChar : whiteChar;
     }
   }

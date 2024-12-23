@@ -1,4 +1,5 @@
-const message = 'A preview of the community feature has begun!';
+const message =
+  'The preview of the community feature has begun! The new features are still simplified.';
 
 export const News = () => {
   return (

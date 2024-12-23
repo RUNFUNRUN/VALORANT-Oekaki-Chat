@@ -3,67 +3,29 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { DragMode, DrawingMode, Height, Resolution } from '@/types';
+import { MAX_HEIGHT } from '@/config';
+import type { DragMode, DrawingMode, Height } from '@/types';
 import { Eraser, PenLine } from 'lucide-react';
 import type { Dispatch } from 'react';
 
 export const Setting = ({
-  setResolution,
   drawingMode,
   setDrawingMode,
   dragMode,
   setDragMode,
   height,
   setHeight,
-  maxH,
 }: {
-  setResolution: Dispatch<Resolution>;
   drawingMode: DrawingMode;
   setDrawingMode: Dispatch<DrawingMode>;
   dragMode: DragMode;
   setDragMode: Dispatch<DragMode>;
   height: Height;
   setHeight: Dispatch<Height>;
-  maxH: number;
 }) => {
   return (
-    <div className='w-[390px] md:w-[750px] lg:w-[1000px] mx-auto my-4 flex flex-col gap-2'>
-      <div>
-        <Label htmlFor='resolution' className='text-xl font-bold'>
-          Resolution
-        </Label>
-        <RadioGroup
-          defaultValue='fullhd'
-          id='resolution'
-          className='flex gap-4'
-        >
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem
-              value='fullhd'
-              id='fullhd'
-              onClick={() => {
-                setResolution('fullhd');
-              }}
-            />
-            <Label htmlFor='fullhd' className='text-xl'>
-              Full HD
-            </Label>
-          </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem
-              value='stretched'
-              id='stretched'
-              onClick={() => {
-                setResolution('stretched');
-              }}
-            />
-            <Label htmlFor='stretched' className='text-xl'>
-              Stretched
-            </Label>
-          </div>
-        </RadioGroup>
-      </div>
-      <div>
+    <div className='mx-auto my-4 flex flex-col gap-2'>
+      <div className='flex flex-col gap-1'>
         <Label htmlFor='height' className='text-xl'>
           <span className='font-bold'>Height</span> (1-13 default: 7)
         </Label>
@@ -73,15 +35,21 @@ export const Setting = ({
             type='number'
             value={height}
             onChange={(e) => {
-              if (height === maxH && Number(e.target.value) > maxH) {
-                setHeight(maxH);
+              if (
+                height === MAX_HEIGHT &&
+                Number(e.target.value) > MAX_HEIGHT
+              ) {
+                setHeight(MAX_HEIGHT);
                 return;
               }
               if (height === 1 && Number(e.target.value) < 1) {
                 setHeight(1);
                 return;
               }
-              if (Number(e.target.value) < 1 || Number(e.target.value) > maxH) {
+              if (
+                Number(e.target.value) < 1 ||
+                Number(e.target.value) > MAX_HEIGHT
+              ) {
                 return;
               }
               setHeight(Number(e.target.value));
@@ -90,7 +58,7 @@ export const Setting = ({
           <Slider
             defaultValue={[height]}
             min={1}
-            max={maxH}
+            max={MAX_HEIGHT}
             step={1}
             onValueChange={(e) => setHeight(e[0])}
           />

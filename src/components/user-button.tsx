@@ -1,4 +1,5 @@
 import { auth } from '@/auth';
+import Link from 'next/link';
 import { SignIn, SignOut } from './auth-components';
 import { Avatar, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
@@ -42,6 +43,11 @@ export const UserButton = async () => {
               </p>
             </div>
           </DropdownMenuLabel>
+          <DropdownMenuItem>
+            <Button asChild variant='ghost' className='w-full p-0'>
+              <Link href='/dashboard'>Dashboard</Link>
+            </Button>
+          </DropdownMenuItem>
           <DropdownMenuItem>
             <SignOut />
           </DropdownMenuItem>

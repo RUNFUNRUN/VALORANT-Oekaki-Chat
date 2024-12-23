@@ -1,16 +1,18 @@
-import type { Metadata } from 'next';
+'use client';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { InfiniteScrollArt } from './_components/infinite-scroll-art';
+
+const queryClient = new QueryClient();
 
 const Page = () => {
   return (
-    <div className='container mt-4 mb-20'>
-      <InfiniteScrollArt resolution='fullhd' />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className='container mt-4 mb-20'>
+        <InfiniteScrollArt />
+      </div>
+    </QueryClientProvider>
   );
 };
 
 export default Page;
-
-export const metadata: Metadata = {
-  title: 'VALORANT Oekaki Chat | Community',
-};

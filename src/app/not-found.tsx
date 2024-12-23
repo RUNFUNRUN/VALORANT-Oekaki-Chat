@@ -3,8 +3,6 @@ import Link from 'next/link';
 import './globals.css';
 import { cn } from '@/lib/utils';
 
-export const runtime = 'edge';
-
 const inter = Inter({ subsets: ['latin'] });
 
 const NotFound = () => {

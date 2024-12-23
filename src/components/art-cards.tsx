@@ -1,6 +1,5 @@
-import { cn } from '@/lib/utils';
 import { formatDate, unflattenArray } from '@/utils';
-import { Art } from '@prisma/client';
+import type { Art } from '@prisma/client';
 import { CopyButton } from './copy-button';
 import { PreviewCanvas } from './preview-canvas';
 import {
@@ -18,32 +17,19 @@ const ArtCard = ({ art }: { art: Art }) => {
   const date = formatDate(new Date(art.createdAt));
 
   return (
-    <Card
-      className={cn(
-        art.width === 27 ? 'w-[606px]' : 'w-[586px]',
-        'px-8 mx-auto',
-      )}
-    >
+    <Card className='w-[586px] px-8 mx-auto'>
       <CardHeader className='mx-0 px-0'>
         <CardTitle className='mx-0 px-0'>{art.title}</CardTitle>
-        <CardDescription className='m-0 p-0 flex justify-between'>
+        <CardDescription className='m-0 p-0 flex flex-col gap-2'>
           <span>{art.description}</span>
-          <span>{date}</span>
+          <span className='text-right'>{date}</span>
         </CardDescription>
       </CardHeader>
       <CardContent className='mx-0 px-0'>
-        <PreviewCanvas
-          asciiData={asciiData}
-          width={art.width}
-          height={art.height}
-        />
+        <PreviewCanvas asciiData={asciiData} height={art.height} />
       </CardContent>
       <CardFooter className='flex justify-between mx-0 px-0'>
-        <CopyButton
-          asciiData={asciiData}
-          width={art.width}
-          height={art.height}
-        />
+        <CopyButton asciiData={asciiData} height={art.height} />
         {/* favorite button */}
       </CardFooter>
     </Card>
@@ -74,7 +60,10 @@ export const SkeletonCards = () => {
       {Array(3)
         .fill(0)
         .map((_, i) => (
-          <Skeleton className='w-[586px] h-[330px] mx-auto' key={i} />
+          <Skeleton
+            className='w-[586px] h-[358px] mx-auto'
+            key={i.toString()}
+          />
         ))}
     </div>
   );

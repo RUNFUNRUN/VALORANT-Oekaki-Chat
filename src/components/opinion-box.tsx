@@ -1,5 +1,6 @@
 'use client';
 
+import type { AppType } from '@/app/api/hono/[[...route]]/route';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -12,9 +13,11 @@ import {
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import type { OpinionBoxData, OpinionBoxResponse } from '@/types';
+import { hc } from 'hono/client';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+
+const client = hc<AppType>('/');
 
 export const OpinionBox = () => {
   const [open, setOpen] = useState(false);
@@ -25,22 +28,15 @@ export const OpinionBox = () => {
 
   const handleClick = async () => {
     setLoading(true);
-    const reqJson: OpinionBoxData = { content: text };
-    const post = await fetch('/api/opinion-box', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(reqJson),
+    const result = await client.api.hono.opinions.$post({
+      json: { message: text },
     });
-    const resJson: OpinionBoxResponse = await post.json();
     setOpen(false);
     setLoading(false);
     setText('');
-    if (post.status !== 200) {
+    if (result.status !== 201) {
       toast({
         title: 'Failed to submit!',
-        description: resJson.error as string,
         variant: 'destructive',
       });
       return;
@@ -61,7 +57,7 @@ export const OpinionBox = () => {
         <DialogContent className='sm:max-w-[500px]'>
           <DialogHeader>
             <DialogTitle className='text-xl'>Opinion box</DialogTitle>
-            <DialogDescription className='text-lg'>
+            <DialogDescription className='text-md'>
               <p>Let me know what you think!</p>
               <p>
                 If you want a reply, write to me with your contact information
@@ -72,6 +68,7 @@ export const OpinionBox = () => {
           <Textarea
             className='resize-none'
             value={text}
+            rows={5}
             onChange={(e) => {
               setText(e.target.value);
             }}

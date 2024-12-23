@@ -1,28 +1,27 @@
-import { ThemeProvider } from '@/providers/theme-provider';
+import { NextAuthProvider } from '@/components/providers/next-auth-provider';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import { cn } from '@/lib/utils';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
-import './globals.css';
-import { cn } from '@/lib/utils';
-import NextAuthProvider from '@/providers/next-auth-provider';
 import { Inter } from 'next/font/google';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang='en'>
-      {process.env.NODE_ENV === 'production' && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />
-      )}
       <body className={cn(inter.className, 'min-h-dvh flex flex-col')}>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='system'
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextAuthProvider>{children}</NextAuthProvider>
-        </ThemeProvider>
+        <NextAuthProvider>
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

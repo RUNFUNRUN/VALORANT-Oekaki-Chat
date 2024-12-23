@@ -1,12 +1,12 @@
 import { OpinionBox } from '@/components/opinion-box';
 import { OekakiChat } from './_components/oekaki-chat';
-import { Share } from './_components/share';
+import { SocialMedia } from './_components/social-media';
 
 const Home = () => {
   return (
     <>
       <OekakiChat />
-      <Share />
+      <SocialMedia />
       <OpinionBox />
     </>
   );
