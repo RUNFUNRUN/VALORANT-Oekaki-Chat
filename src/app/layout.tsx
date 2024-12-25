@@ -1,7 +1,6 @@
 import { NextAuthProvider } from '@/components/providers/next-auth-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { cn } from '@/lib/utils';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
