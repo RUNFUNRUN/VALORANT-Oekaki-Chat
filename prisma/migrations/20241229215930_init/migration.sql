@@ -57,6 +57,7 @@ CREATE TABLE "Favorite" (
 CREATE TABLE "Comment" (
     "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "content" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "artId" TEXT NOT NULL,
 

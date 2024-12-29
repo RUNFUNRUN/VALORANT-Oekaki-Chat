@@ -1,5 +1,4 @@
 import { formatDate, unflattenArray } from '@/utils';
-import type { Art } from '@prisma/client';
 import { CopyButton } from './copy-button';
 import { PreviewCanvas } from './preview-canvas';
 import {
@@ -12,7 +11,28 @@ import {
 } from './ui/card';
 import { Skeleton } from './ui/skeleton';
 
-const ArtCard = ({ art }: { art: Art }) => {
+type ArtCardProps = {
+  id: string;
+  createdAt: Date;
+  title: string;
+  description?: string;
+  body: boolean[];
+  height: number;
+  userId: string;
+  userName?: string;
+  favoritesCount: number;
+  favoritedByMe: boolean;
+  commentsCount: number;
+  comments: {
+    id: string;
+    userId: string;
+    userName?: string;
+    content: string;
+    createdAt: Date;
+  }[];
+};
+
+const ArtCard = ({ art }: { art: ArtCardProps }) => {
   const asciiData = unflattenArray(art.body);
   const date = formatDate(new Date(art.createdAt));
 
@@ -36,7 +56,7 @@ const ArtCard = ({ art }: { art: Art }) => {
   );
 };
 
-export const ArtCards = ({ arts }: { arts: Art[] }) => {
+export const ArtCards = ({ arts }: { arts: ArtCardProps[] }) => {
   if (arts.length === 0) {
     return (
       <p className='text-center font-bold text-2xl'>

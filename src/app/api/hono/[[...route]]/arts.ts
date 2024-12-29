@@ -1,10 +1,10 @@
-import { auth } from '@/auth';
 import { prisma } from '@/client';
 import { artApiSchema } from '@/schemas';
 import { flattenArray } from '@/utils';
 import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { z } from 'zod';
+import { getUser } from './_utils/getUser';
 
 export const arts = new Hono()
   .get(
@@ -32,7 +32,35 @@ export const arts = new Hono()
           return c.json({}, 404);
         }
 
+        const user = await getUser();
+
         const arts = await prisma.art.findMany({
+          select: {
+            id: true,
+            createdAt: true,
+            title: true,
+            description: true,
+            body: true,
+            height: true,
+            user: { select: { id: true, name: true } },
+            favorites: {
+              where: {
+                userId: user?.id,
+              },
+              select: {
+                id: true,
+              },
+            },
+            comments: {
+              select: {
+                id: true,
+                user: { select: { id: true, name: true } },
+                content: true,
+                createdAt: true,
+              },
+            },
+            _count: { select: { favorites: true, comments: true } },
+          },
           orderBy: {
             createdAt: 'desc',
           },
@@ -49,20 +77,7 @@ export const arts = new Hono()
     },
   )
   .post('/', zValidator('json', artApiSchema), async (c) => {
-    const session = await auth();
-    if (!session) {
-      return c.json({}, 401);
-    }
-
-    const account = await prisma.account.findUnique({
-      where: { access_token: session.accessToken },
-    });
-    if (!account) {
-      return c.json({}, 401);
-    }
-    const user = await prisma.user.findUnique({
-      where: { id: account.userId },
-    });
+    const user = await getUser();
     if (!user) {
       return c.json({}, 401);
     }
