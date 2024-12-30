@@ -50,30 +50,33 @@ export const InfiniteScrollArt = () => {
   ) : (
     <>
       {data.pages.map((page, i) => {
-        const arts = page.data.map((art) => {
-          return {
-            id: art.id,
-            createdAt: new Date(art.createdAt),
-            title: art.title,
-            description: art.description ?? undefined,
-            body: art.body,
-            height: art.height,
-            userId: art.user.id,
-            userName: art.user.name ?? undefined,
-            favoritesCount: art._count.favorites,
-            favoritedByMe: art.favorites.length > 0,
-            commentsCount: art._count.comments,
-            comments: art.comments.map((comment) => {
-              return {
-                id: comment.id,
-                userId: comment.user.id,
-                userName: comment.user.name ?? undefined,
-                content: comment.content,
-                createdAt: new Date(comment.createdAt),
-              };
-            }),
-          };
-        });
+        const arts =
+          page.data === undefined
+            ? []
+            : page.data.map((art) => {
+                return {
+                  id: art.id,
+                  createdAt: new Date(art.createdAt),
+                  title: art.title,
+                  description: art.description ?? undefined,
+                  body: art.body,
+                  height: art.height,
+                  userId: art.user.id,
+                  userName: art.user.name ?? undefined,
+                  favoritesCount: art._count.favorites,
+                  favoritedByMe: art.favorites.length > 0,
+                  commentsCount: art._count.comments,
+                  comments: art.comments.map((comment) => {
+                    return {
+                      id: comment.id,
+                      userId: comment.user.id,
+                      userName: comment.user.name ?? undefined,
+                      content: comment.content,
+                      createdAt: new Date(comment.createdAt),
+                    };
+                  }),
+                };
+              });
         return <ArtCards arts={arts} key={i.toString()} />;
       })}
       <div className='text-center mt-8'>

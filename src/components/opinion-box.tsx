@@ -1,6 +1,6 @@
 'use client';
 
-import type { AppType } from '@/app/api/hono/[[...route]]/route';
+import type { AppType } from '@/app/api/[[...hono]]/route';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -28,7 +28,7 @@ export const OpinionBox = () => {
 
   const handleClick = async () => {
     setLoading(true);
-    const result = await client.api.hono.opinions.$post({
+    const result = await client.api.opinions.$post({
       json: { message: text },
     });
     setOpen(false);
