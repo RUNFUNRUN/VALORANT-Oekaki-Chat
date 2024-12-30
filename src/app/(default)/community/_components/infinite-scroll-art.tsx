@@ -1,4 +1,4 @@
-import type { AppType } from '@/app/api/hono/[[...route]]/route';
+import type { AppType } from '@/app/api/[[...hono]]/route';
 import { ArtCards, SkeletonCards } from '@/components/art-cards';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { type InferResponseType, hc } from 'hono/client';
@@ -13,9 +13,9 @@ export const InfiniteScrollArt = () => {
   const fetchArts = async ({
     pageParam,
   }: { pageParam: number }): Promise<
-    InferResponseType<typeof client.api.hono.arts.$get, 200>
+    InferResponseType<typeof client.api.arts.$get, 200>
   > => {
-    const res = await client.api.hono.arts.$get({
+    const res = await client.api.arts.$get({
       query: { cursor: pageParam.toString() },
     });
 

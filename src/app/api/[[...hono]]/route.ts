@@ -4,7 +4,7 @@ import { arts } from './arts';
 import { opinions } from './opinions';
 
 const app = new Hono()
-  .basePath('/api/hono')
+  .basePath('/api')
   .route('/arts', arts)
   .route('/opinions', opinions);
 

@@ -1,4 +1,4 @@
-import type { AppType } from '@/app/api/hono/[[...route]]/route';
+import type { AppType } from '@/app/api/[[...hono]]/route';
 import { PreviewCanvas } from '@/components/preview-canvas';
 import { Button } from '@/components/ui/button';
 import {
@@ -71,7 +71,7 @@ export const ShareButton = ({
 
     setShareLoading(true);
     try {
-      const res = await client.api.hono.arts.$post({ json: values });
+      const res = await client.api.arts.$post({ json: values });
       if (res.status !== 201) {
         throw new Error();
       }
