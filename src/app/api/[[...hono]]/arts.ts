@@ -13,6 +13,7 @@ export const arts = new Hono()
       'query',
       z.object({
         cursor: z.string().optional(),
+        sort: z.enum(['new', 'favorites']).default('new'),
       }),
     ),
     async (c) => {
@@ -20,6 +21,7 @@ export const arts = new Hono()
 
       const query = c.req.valid('query');
       const cursor = Number.parseInt(query.cursor ?? '0');
+      const sort = query.sort;
 
       if (Number.isNaN(cursor)) {
         return c.json({}, 400);
@@ -35,6 +37,7 @@ export const arts = new Hono()
         const user = await getUser();
 
         const arts = await prisma.art.findMany({
+          relationLoadStrategy: 'join',
           select: {
             id: true,
             createdAt: true,
@@ -61,9 +64,10 @@ export const arts = new Hono()
             },
             _count: { select: { favorites: true, comments: true } },
           },
-          orderBy: {
-            createdAt: 'desc',
-          },
+          orderBy:
+            sort === 'new'
+              ? { createdAt: 'desc' }
+              : { favorites: { _count: 'desc' } },
           skip: cursor,
           take: pageSize,
         });

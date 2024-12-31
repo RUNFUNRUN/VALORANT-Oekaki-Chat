@@ -1,17 +1,13 @@
-'use client';
-
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ClientProvider } from '@/components/providers/client-provider';
 import { InfiniteScrollArt } from './_components/infinite-scroll-art';
-
-const queryClient = new QueryClient();
 
 const Page = () => {
   return (
-    <QueryClientProvider client={queryClient}>
+    <ClientProvider>
       <div className='container mt-4 mb-20'>
         <InfiniteScrollArt />
       </div>
-    </QueryClientProvider>
+    </ClientProvider>
   );
 };
 

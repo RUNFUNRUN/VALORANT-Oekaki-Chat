@@ -1,3 +1,5 @@
+'use client';
+
 import type { AppType } from '@/app/api/[[...hono]]/route';
 import { ArtCards, SkeletonCards } from '@/components/art-cards';
 import { useInfiniteQuery } from '@tanstack/react-query';
