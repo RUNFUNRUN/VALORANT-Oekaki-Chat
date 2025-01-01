@@ -1,5 +1,5 @@
 import type { AsciiData, Height } from '@/types';
-import { WIDTH } from './config';
+import { MAX_HEIGHT, WIDTH } from './config';
 
 export const createAscii = (asciiData: AsciiData, height: Height) => {
   const grayChar = '░';
@@ -16,8 +16,8 @@ export const createAscii = (asciiData: AsciiData, height: Height) => {
 export const flattenArray = (array: boolean[][]): boolean[] => array.flat();
 
 export const unflattenArray = (array: boolean[]): boolean[][] => {
-  const cols = 27;
-  const rows = 13;
+  const cols = WIDTH;
+  const rows = MAX_HEIGHT;
   const result: boolean[][] = [];
   for (let i = 0; i < rows; i++) {
     result.push(array.slice(i * cols, (i + 1) * cols));

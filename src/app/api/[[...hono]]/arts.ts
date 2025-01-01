@@ -5,6 +5,7 @@ import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { z } from 'zod';
 import { getUser } from './_utils/getUser';
+import { sessionMiddleware } from './middleware';
 
 export const arts = new Hono()
   .get(
@@ -28,13 +29,13 @@ export const arts = new Hono()
       }
 
       try {
-        const artsCount = await prisma.art.count();
+        const user = await getUser();
 
-        if (cursor > artsCount) {
+        const artCount = await prisma.art.count();
+
+        if (cursor > artCount) {
           return c.json({}, 404);
         }
-
-        const user = await getUser();
 
         const arts = await prisma.art.findMany({
           relationLoadStrategy: 'join',
@@ -54,14 +55,6 @@ export const arts = new Hono()
                 id: true,
               },
             },
-            comments: {
-              select: {
-                id: true,
-                user: { select: { id: true, name: true } },
-                content: true,
-                createdAt: true,
-              },
-            },
             _count: { select: { favorites: true, comments: true } },
           },
           orderBy:
@@ -72,21 +65,17 @@ export const arts = new Hono()
           take: pageSize,
         });
 
-        const next = cursor + pageSize < artsCount ? cursor + pageSize : null;
+        const next = cursor + pageSize < artCount ? cursor + pageSize : null;
 
-        return c.json({ data: arts, next }, 200);
+        return c.json({ data: arts, next }, 201);
       } catch {
         return c.json({}, 500);
       }
     },
   )
-  .post('/', zValidator('json', artApiSchema), async (c) => {
-    const user = await getUser();
-    if (!user) {
-      return c.json({}, 401);
-    }
-
+  .post('/', sessionMiddleware, zValidator('json', artApiSchema), async (c) => {
     const art = c.req.valid('json');
+    const user = c.var.session;
 
     try {
       const result = await prisma.art.create({
@@ -102,5 +91,61 @@ export const arts = new Hono()
       return c.json({ art: result }, 201);
     } catch {
       return c.json({}, 500);
+    }
+  })
+  .get('/:id', async (c) => {})
+  .post('/:id/favorite', sessionMiddleware, async (c) => {
+    const user = c.var.session;
+    const artId = c.req.param('id');
+    try {
+      const art = await prisma.favorite.findUnique({
+        where: { artId_userId: { artId, userId: user.id } },
+      });
+      if (!art) {
+        return c.status(404);
+      }
+
+      const favorite = await prisma.favorite.findUnique({
+        where: { artId_userId: { artId, userId: user.id } },
+      });
+      if (!favorite) {
+        return c.status(409);
+      }
+
+      await prisma.favorite.create({
+        data: {
+          userId: user.id,
+          artId,
+        },
+      });
+      return c.status(201);
+    } catch {
+      return c.status(500);
+    }
+  })
+  .delete('/:id/favorite', sessionMiddleware, async (c) => {
+    const user = c.var.session;
+    const artId = c.req.param('id');
+    try {
+      const art = await prisma.favorite.findUnique({
+        where: { artId_userId: { artId, userId: user.id } },
+      });
+      if (!art) {
+        return c.status(404);
+      }
+
+      const favorite = await prisma.favorite.findUnique({
+        where: { artId_userId: { artId, userId: user.id } },
+      });
+      if (!favorite) {
+        return c.status(404);
+      }
+
+      await prisma.favorite.delete({
+        where: { artId_userId: { artId, userId: user.id } },
+      });
+      return c.status(204);
+    } catch {
+      return c.status(500);
     }
   });

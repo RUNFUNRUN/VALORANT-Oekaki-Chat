@@ -1,4 +1,3 @@
-import { WIDTH } from '@/config';
 import type { AsciiData } from '@/types';
 
 export const PreviewCanvas = ({
@@ -14,9 +13,6 @@ export const PreviewCanvas = ({
         return (
           <div key={i.toString()} className='h-5'>
             {row.map((active, j) => {
-              if (j >= WIDTH) {
-                return null;
-              }
               if (active) {
                 return (
                   <span

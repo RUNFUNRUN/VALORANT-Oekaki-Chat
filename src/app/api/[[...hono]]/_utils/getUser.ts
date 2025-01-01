@@ -7,15 +7,8 @@ export const getUser = async () => {
     return;
   }
 
-  const account = await prisma.account.findUnique({
-    where: { access_token: session.accessToken },
-  });
-  if (!account) {
-    return;
-  }
-
   const user = await prisma.user.findUnique({
-    where: { id: account.userId },
+    where: { id: session.user.id },
   });
   if (!user) {
     return;

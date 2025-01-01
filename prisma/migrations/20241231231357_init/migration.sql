@@ -83,13 +83,10 @@ CREATE UNIQUE INDEX "Art_id_userId_key" ON "Art"("id", "userId");
 CREATE INDEX "Favorite_createdAt_idx" ON "Favorite"("createdAt" DESC);
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Favorite_id_userId_key" ON "Favorite"("id", "userId");
+CREATE UNIQUE INDEX "Favorite_artId_userId_key" ON "Favorite"("artId", "userId");
 
 -- CreateIndex
 CREATE INDEX "Comment_createdAt_idx" ON "Comment"("createdAt" DESC);
-
--- CreateIndex
-CREATE UNIQUE INDEX "Comment_id_userId_key" ON "Comment"("id", "userId");
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

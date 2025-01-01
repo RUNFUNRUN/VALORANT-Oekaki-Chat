@@ -2,9 +2,11 @@ import { Hono } from 'hono';
 import { handle } from 'hono/vercel';
 import { arts } from './arts';
 import { opinions } from './opinions';
+import { users } from './users';
 
 const app = new Hono()
   .basePath('/api')
+  .route('/users', users)
   .route('/arts', arts)
   .route('/opinions', opinions);
 

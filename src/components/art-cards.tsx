@@ -1,4 +1,5 @@
 import { formatDate, unflattenArray } from '@/utils';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { CopyButton } from './copy-button';
 import { PreviewCanvas } from './preview-canvas';
 import {
@@ -23,18 +24,14 @@ type ArtCardProps = {
   favoritesCount: number;
   favoritedByMe: boolean;
   commentsCount: number;
-  comments: {
-    id: string;
-    userId: string;
-    userName?: string;
-    content: string;
-    createdAt: Date;
-  }[];
 };
 
 const ArtCard = ({ art }: { art: ArtCardProps }) => {
   const asciiData = unflattenArray(art.body);
   const date = formatDate(new Date(art.createdAt));
+
+  const queryClient = useQueryClient();
+  // TODO: mutation
 
   return (
     <Card className='w-[586px] px-8 mx-auto'>

@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { ClientProvider } from '@/components/providers/client-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +19,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <ClientProvider>{children}</ClientProvider>
           </ThemeProvider>
         </NextAuthProvider>
       </body>

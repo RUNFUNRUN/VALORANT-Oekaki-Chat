@@ -9,7 +9,7 @@ import { useInView } from 'react-intersection-observer';
 
 const client = hc<AppType>('/');
 
-export const InfiniteScrollArt = () => {
+export const InfiniteScrollFavarites = () => {
   const { ref, inView } = useInView();
 
   const fetchArts = async ({

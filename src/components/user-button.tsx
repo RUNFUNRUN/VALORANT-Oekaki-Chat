@@ -45,7 +45,7 @@ export const UserButton = async () => {
           </DropdownMenuLabel>
           <DropdownMenuItem>
             <Button asChild variant='ghost' className='w-full p-0'>
-              <Link href='/dashboard'>Dashboard</Link>
+              <Link href={`/users/${session.user.id}`}>My page</Link>
             </Button>
           </DropdownMenuItem>
           <DropdownMenuItem>
